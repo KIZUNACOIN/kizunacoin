@@ -38,8 +38,8 @@ angular.module('copayApp.controllers').controller('preferencesUnitController',
       , */{
         name: 'bytes',
         shortName: 'bytes',
-        value: 1,
-        decimals: 0,
+        value: 1000000,
+        decimals: 6,
         code: 'one',
       }
       , {

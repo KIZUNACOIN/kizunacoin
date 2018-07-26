@@ -50,7 +50,7 @@ angular.module('copayApp.controllers')
 			if (form.address && form.address.$invalid && !self.blockUx) {
 				console.log("invalid address, resetting form");
 				self.resetForm();
-				self.error = gettext('Could not recognize a valid Byteball QR Code');
+				self.error = gettext('Could not recognize a valid Kizunacoin QR Code');
 			}*/
 		});
 
@@ -748,8 +748,8 @@ angular.module('copayApp.controllers')
 					is_private = assetInfo.is_private;
 			}
 			return {
-				message: "Here is your " + (is_private ? "file" : "link") + " to receive " + amount + " " + asset + usd_amount_str + (is_private ? ".  If you don't have a Byteball wallet yet, install it from https://byteball.org." : (": https://byteball.org/#textcoin?" + mnemonic)),
-				subject: "Byteball user beamed you money"
+				message: "Here is your " + (is_private ? "file" : "link") + " to receive " + amount + " " + asset + usd_amount_str + (is_private ? ".  If you don't have a Kizunacoin wallet yet, install it from https://kizunacoin.jp." : (": https://kizunacoin.jp/#textcoin?" + mnemonic)),
+				subject: "Kizunacoin user beamed you money"
 			}
 		}
 
@@ -903,7 +903,9 @@ angular.module('copayApp.controllers')
 					amount *= bbUnitValue;
 				else if (assetInfo.decimals)
 					amount *= Math.pow(10, assetInfo.decimals);
-				amount = Math.round(amount);
+				amount = Math.round(amount);				
+				console.log("**********  unit value : " + unitValue);
+				console.log("**********  amount : " + amount);
 
 				var current_payment_key = '' + asset + address + amount;
 			}
@@ -1662,7 +1664,7 @@ angular.module('copayApp.controllers')
 		};
 
 		this.getPrivatePayloadSavePath = function(cb) {
-			var fileName = 'ByteballPayment-' + $filter('date')(Date.now(), 'yyyy-MM-dd-HH-mm-ss') + '.' + configService.privateTextcoinExt;
+			var fileName = 'KizunacoinPayment-' + $filter('date')(Date.now(), 'yyyy-MM-dd-HH-mm-ss') + '.' + configService.privateTextcoinExt;
 			if (!isCordova) {
 				var inputFile = document.createElement("input"); 
 				inputFile.type = "file";
@@ -1681,7 +1683,7 @@ angular.module('copayApp.controllers')
 			}
 			else {
 				var root = window.cordova.file.cacheDirectory;//isMobile.iOS() ? window.cordova.file.documentsDirectory : window.cordova.file.externalRootDirectory;
-				var path = 'Byteball';
+				var path = 'Kizunacoin';
 				cb(null, {root: root, path: path, fileName: fileName});
 			}
 		};
@@ -1769,7 +1771,7 @@ angular.module('copayApp.controllers')
 
 				$scope.openInExplorer = function() {
 					var testnet = home.isTestnet ? 'testnet' : '';
-					var url = 'https://' + testnet + 'explorer.byteball.org/#' + btx.unit;
+					var url = 'https://' + testnet + 'explorer.kizunacoin.jp/#' + btx.unit;
 					if (typeof nw !== 'undefined')
 						nw.Shell.openExternal(url);
 					else if (isCordova)

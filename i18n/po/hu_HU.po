@@ -42,8 +42,8 @@ msgid "12 words separated by dashes"
 msgstr ""
 
 #: public/views/preferencesGlobal.html:139
-msgid "About Byteball"
-msgstr "A Byteball-ról"
+msgid "About Kizunacoin"
+msgstr "A Kizunacoin-ról"
 
 #: src/js/controllers/copayers.js:8
 #: src/js/controllers/preferencesDelete.js:9
@@ -125,8 +125,8 @@ msgid "All Wallet Addresses"
 msgstr "A tárca címei"
 
 #: public/views/translators.html:52
-msgid "All contributions to Byteball's translation are welcome. Sign up at crowdin.com and join the Byteball project at"
-msgstr "Szívesen látunk minden segítséget a Byteball fordításához. Jelentkezz be a crowdin.com oldalon és csatlakozz a Byteball projekthez  "
+msgid "All contributions to Kizunacoin's translation are welcome. Sign up at crowdin.com and join the Kizunacoin project at"
+msgstr "Szívesen látunk minden segítséget a Kizunacoin fordításához. Jelentkezz be a crowdin.com oldalon és csatlakozz a Kizunacoin projekthez  "
 
 #: public/views/modals/multi-payment.html:56
 msgid "Already Paid"
@@ -179,7 +179,7 @@ msgid "Asset"
 msgstr "Értéktárgy"
 
 #: public/views/walletHome.html:534
-msgid "Attest profile data linked to any Byteball address."
+msgid "Attest profile data linked to any Kizunacoin address."
 msgstr ""
 
 #: public/views/walletHome.html:348
@@ -283,11 +283,11 @@ msgid "Browser unsupported"
 msgstr "Nem támogatott böngésző"
 
 #: public/index.html:12
-msgid "Byteball &mdash; smart payments"
+msgid "KIZUNACOIN Wallet &mdash; smart DAG payments"
 msgstr ""
 
 #: public/views/modals/destination-address.html:119
-msgid "Byteball address"
+msgid "Kizunacoin address"
 msgstr ""
 
 #: public/views/includes/password.html:24
@@ -490,8 +490,8 @@ msgid "Could not import. Check input file and password"
 msgstr "Importálás nem sikerült. Ellenőrizd a megadott fájlt és a jelszót"
 
 #: src/js/controllers/walletHome.js:53
-msgid "Could not recognize a valid Byteball QR Code"
-msgstr "Nem sikerült felismerni érvényes Byteball QR kódot"
+msgid "Could not recognize a valid Kizunacoin QR Code"
+msgstr "Nem sikerült felismerni érvényes Kizunacoin QR kódot"
 
 #: src/js/controllers/walletHome.js:696
 msgid "Could not send payment"
@@ -639,7 +639,7 @@ msgid "Download CSV file"
 msgstr "CSV fájl letöltése"
 
 #: public/views/splash.html:26
-msgid "Download the entire Byteball database"
+msgid "Download the entire Kizunacoin database"
 msgstr ""
 
 #: public/views/correspondentDevice.html:26
@@ -941,8 +941,8 @@ msgid "Multidevice Wallet"
 msgstr "Többeszközös tárca"
 
 #: public/views/walletHome.html:255
-msgid "My Byteball address"
-msgstr "Saját Byteball cím"
+msgid "My Kizunacoin address"
+msgstr "Saját Kizunacoin cím"
 
 #: public/views/correspondentDevice.html:297
 msgid "My recording preference"
@@ -1123,7 +1123,7 @@ msgid "Port"
 msgstr ""
 
 #: public/views/walletHome.html:540
-msgid "Post arbitrary key-value pairs of data into Byteball network."
+msgid "Post arbitrary key-value pairs of data into Kizunacoin network."
 msgstr ""
 
 #: public/views/walletHome.html:531
@@ -1622,7 +1622,7 @@ msgid "To be able to restore everything, please create a full backup (find the o
 msgstr ""
 
 #: public/views/walletHome.html:597
-msgid "To be able to send arbitrary data into Byteball network, please switch to a single-address wallet first or create one."
+msgid "To be able to send arbitrary data into Kizunacoin network, please switch to a single-address wallet first or create one."
 msgstr ""
 
 #: public/views/walletHome.html:449
@@ -1748,8 +1748,8 @@ msgid "WARNINGS:"
 msgstr "FIGYELMEZTETÉSEK:"
 
 #: public/views/splash.html:53
-msgid "WELCOME TO BYTEBALL"
-msgstr "A BYTEBALL ÜDVÖZÖL"
+msgid "WELCOME TO KIZUNACOIN"
+msgstr "A KIZUNACOIN ÜDVÖZÖL"
 
 #: public/views/copayers.html:24
 msgid "Waiting for co-signers"
@@ -1785,8 +1785,8 @@ msgid "Wallet Name (at creation)"
 msgstr "Tárca neve (létrehozáskor)"
 
 #: src/js/services/profileService.js:453
-msgid "Wallet already in Byteball:"
-msgstr "A tárca már létezik a Byteball-ban"
+msgid "Wallet already in Kizunacoin:"
+msgstr "A tárca már létezik a Kizunacoin-ban"
 
 #: public/views/create.html:48
 msgid "Wallet name"
@@ -2011,7 +2011,7 @@ msgid "or"
 msgstr ""
 
 #: public/views/backup.html:24
-msgid "or backup all Byteball data at"
+msgid "or backup all Kizunacoin data at"
 msgstr ""
 
 #: public/views/modals/offer-contract.html:51

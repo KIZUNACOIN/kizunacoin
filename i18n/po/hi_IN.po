@@ -42,8 +42,8 @@ msgid "12 words separated by dashes"
 msgstr "डैश से अलग किए गए १२ शब्द"
 
 #: public/views/preferencesGlobal.html:139
-msgid "About Byteball"
-msgstr "बाईटबॉल के बारे में"
+msgid "About Kizunacoin"
+msgstr "Kizunacoin के बारे में"
 
 #: src/js/controllers/copayers.js:8
 #: src/js/controllers/preferencesDelete.js:9
@@ -125,7 +125,7 @@ msgid "All Wallet Addresses"
 msgstr "सभी वॉलेट पतें"
 
 #: public/views/translators.html:52
-msgid "All contributions to Byteball's translation are welcome. Sign up at crowdin.com and join the Byteball project at"
+msgid "All contributions to Kizunacoin's translation are welcome. Sign up at crowdin.com and join the Kizunacoin project at"
 msgstr "सभी योगदानों का स्वागत है बाइटबॉल का अनुवाद के लिए. क्रोडिन.कॉम में साईन अप करें और बाइटबॉल परियोजना से जुड़ें"
 
 #: public/views/modals/multi-payment.html:56
@@ -179,7 +179,7 @@ msgid "Asset"
 msgstr "संपत्ति"
 
 #: public/views/walletHome.html:534
-msgid "Attest profile data linked to any Byteball address."
+msgid "Attest profile data linked to any Kizunacoin address."
 msgstr "प्रलेख डेटा प्रमाणित करें जो लिंक किया गया है किसी बाइटबॉल पता में|"
 
 #: public/views/walletHome.html:348
@@ -283,11 +283,11 @@ msgid "Browser unsupported"
 msgstr "निराधार ब्राउज़र"
 
 #: public/index.html:12
-msgid "Byteball &mdash; smart payments"
+msgid "KIZUNACOIN Wallet &mdash; smart DAG payments"
 msgstr ""
 
 #: public/views/modals/destination-address.html:119
-msgid "Byteball address"
+msgid "Kizunacoin address"
 msgstr "बाईटबॉल पता"
 
 #: public/views/includes/password.html:24
@@ -490,7 +490,7 @@ msgid "Could not import. Check input file and password"
 msgstr "आयात नहीं हो सका| निवेश फाइल और पासवर्ड की जाँच करें"
 
 #: src/js/controllers/walletHome.js:53
-msgid "Could not recognize a valid Byteball QR Code"
+msgid "Could not recognize a valid Kizunacoin QR Code"
 msgstr "पहचान नहीं सका एक मान्य बाइटबॉल क्यूआर संकेत"
 
 #: src/js/controllers/walletHome.js:696
@@ -639,7 +639,7 @@ msgid "Download CSV file"
 msgstr "सीएसवी फाइल डाउनलोड करें"
 
 #: public/views/splash.html:26
-msgid "Download the entire Byteball database"
+msgid "Download the entire Kizunacoin database"
 msgstr "पूरी बाइटबॉल डेटाबेस डाउनलोड करें"
 
 #: public/views/correspondentDevice.html:26
@@ -941,8 +941,8 @@ msgid "Multidevice Wallet"
 msgstr "बहुउपकरण वटुवा"
 
 #: public/views/walletHome.html:255
-msgid "My Byteball address"
-msgstr "मेरा बाईटबॉल पता"
+msgid "My Kizunacoin address"
+msgstr "मेरा Kizunacoin पता"
 
 #: public/views/correspondentDevice.html:297
 msgid "My recording preference"
@@ -1123,7 +1123,7 @@ msgid "Port"
 msgstr "पोर्ट"
 
 #: public/views/walletHome.html:540
-msgid "Post arbitrary key-value pairs of data into Byteball network."
+msgid "Post arbitrary key-value pairs of data into Kizunacoin network."
 msgstr "मनमाना कुंजी-अहमियत डेटा का जोड़े को पोस्ट करें बाइटबॉल नेटवर्क में|"
 
 #: public/views/walletHome.html:531
@@ -1622,7 +1622,7 @@ msgid "To be able to restore everything, please create a full backup (find the o
 msgstr "सबकुछ पुनः स्थापित करने के लायक हो जाएँ, पूरी बैकअप तैयार कर लें (मेनुए में विकल्प ढूंढें)"
 
 #: public/views/walletHome.html:597
-msgid "To be able to send arbitrary data into Byteball network, please switch to a single-address wallet first or create one."
+msgid "To be able to send arbitrary data into Kizunacoin network, please switch to a single-address wallet first or create one."
 msgstr "अनियंत्रित डेटा भेजने के लायक हो जाएँ बाइटबॉल नेटवर्क में, कृप्या पहले एकल-पता बटुवे में स्विच करें या एक नया तैयार करें|"
 
 #: public/views/walletHome.html:449
@@ -1749,8 +1749,8 @@ msgid "WARNINGS:"
 msgstr "चेतावनियाँ:"
 
 #: public/views/splash.html:53
-msgid "WELCOME TO BYTEBALL"
-msgstr "बाइटबॉल में आपका स्वागत है"
+msgid "WELCOME TO KIZUNACOIN"
+msgstr "KIZUNACOIN में आपका स्वागत है"
 
 #: public/views/copayers.html:24
 msgid "Waiting for co-signers"
@@ -1786,7 +1786,7 @@ msgid "Wallet Name (at creation)"
 msgstr "बटुवा का नाम (तैयार करते समय)"
 
 #: src/js/services/profileService.js:453
-msgid "Wallet already in Byteball:"
+msgid "Wallet already in Kizunacoin:"
 msgstr "पहले से ही बटुवा बाइटबॉल में है:"
 
 #: public/views/create.html:48
@@ -2012,7 +2012,7 @@ msgid "or"
 msgstr "या"
 
 #: public/views/backup.html:24
-msgid "or backup all Byteball data at"
+msgid "or backup all Kizunacoin data at"
 msgstr "या बैकअप ले लें सभी बाइटबॉल डेटा को में"
 
 #: public/views/modals/offer-contract.html:51

@@ -676,12 +676,14 @@ angular.module('copayApp.controllers').controller('indexController', function($r
     'title': gettext('History'),
     'icon': 'icon-history',
     'link': 'history'
-  }, {
-    'title': gettext('Chat'),
-    'icon': 'icon-bubble',
-    'new_state': 'correspondentDevices',
-    'link': 'chat'
-  }];
+  }
+  // , {
+  //   'title': gettext('Chat'),
+  //   'icon': 'icon-bubble',
+  //   'new_state': 'correspondentDevices',
+  //   'link': 'chat'
+  // }
+];
 
   self.addonViews = addonManager.addonViews();
   self.menu = self.menu.concat(addonManager.addonMenuItems());
@@ -990,7 +992,7 @@ angular.module('copayApp.controllers').controller('indexController', function($r
   self.updateColor = function() {
     var config = configService.getSync();
     config.colorFor = config.colorFor || {};
-    self.backgroundColor = config.colorFor[self.walletId] || '#4A90E2';
+    self.backgroundColor = config.colorFor[self.walletId] || '#00C8DC';
     var fc = profileService.focusedClient;
     fc.backgroundColor = self.backgroundColor;
   };
@@ -1014,41 +1016,42 @@ angular.module('copayApp.controllers').controller('indexController', function($r
 	
     self.arrBalances = [];
     for (var asset in assocBalances){
-        var balanceInfo = assocBalances[asset];
-        balanceInfo.asset = asset;
-        balanceInfo.total = balanceInfo.stable + balanceInfo.pending;
-		if (assocSharedBalances[asset]){
-			balanceInfo.shared = 0;
-			balanceInfo.assocSharedByAddress = {};
-			for (var sa in assocSharedBalances[asset]){
-				var total_on_shared_address = (assocSharedBalances[asset][sa].stable || 0) + (assocSharedBalances[asset][sa].pending || 0);
-				balanceInfo.shared += total_on_shared_address;
-				balanceInfo.assocSharedByAddress[sa] = total_on_shared_address;
-			}
-		}
-		if (balanceInfo.name)
-			profileService.assetMetadata[asset] = {decimals: balanceInfo.decimals, name: balanceInfo.name};
-        if (asset === "base" || asset == self.BLACKBYTES_ASSET || balanceInfo.name){
-			balanceInfo.totalStr = profileService.formatAmountWithUnit(balanceInfo.total, asset);
-			balanceInfo.totalStrWithoutUnit = profileService.formatAmount(balanceInfo.total, asset);
-			balanceInfo.stableStr = profileService.formatAmountWithUnit(balanceInfo.stable, asset);
-			balanceInfo.pendingStr = profileService.formatAmountWithUnitIfShort(balanceInfo.pending, asset);
-			if (typeof balanceInfo.shared === 'number')
-				balanceInfo.sharedStr = profileService.formatAmountWithUnitIfShort(balanceInfo.shared, asset);
-			if (!balanceInfo.name){
-				if (!Math.log10) // android 4.4
-					Math.log10 = function(x) { return Math.log(x) * Math.LOG10E; };
-				if (asset === "base"){
-					balanceInfo.name = self.unitName;
-					balanceInfo.decimals = Math.round(Math.log10(config.unitValue));
-				}
-				else if (asset === self.BLACKBYTES_ASSET){
-					balanceInfo.name = self.bbUnitName;
-					balanceInfo.decimals = Math.round(Math.log10(config.bbUnitValue));
-				}
-			}
+      var balanceInfo = assocBalances[asset];
+      balanceInfo.asset = asset;
+      balanceInfo.total = balanceInfo.stable + balanceInfo.pending;
+      if (assocSharedBalances[asset]){
+        balanceInfo.shared = 0;
+        balanceInfo.assocSharedByAddress = {};
+        for (var sa in assocSharedBalances[asset]){
+          var total_on_shared_address = (assocSharedBalances[asset][sa].stable || 0) + (assocSharedBalances[asset][sa].pending || 0);
+          balanceInfo.shared += total_on_shared_address;
+          balanceInfo.assocSharedByAddress[sa] = total_on_shared_address;
         }
-        self.arrBalances.push(balanceInfo);
+      }
+      if (balanceInfo.name)
+			profileService.assetMetadata[asset] = {decimals: balanceInfo.decimals, name: balanceInfo.name};
+      if (asset === "base" || asset == self.BLACKBYTES_ASSET || balanceInfo.name){
+        balanceInfo.totalStr = profileService.formatAmountWithUnit(balanceInfo.total, asset);
+        balanceInfo.totalStrWithoutUnit = profileService.formatAmount(balanceInfo.total, asset);
+        balanceInfo.stableStr = profileService.formatAmountWithUnit(balanceInfo.stable, asset);
+        balanceInfo.pendingStr = profileService.formatAmountWithUnitIfShort(balanceInfo.pending, asset);
+        if (typeof balanceInfo.shared === 'number')
+          balanceInfo.sharedStr = profileService.formatAmountWithUnitIfShort(balanceInfo.shared, asset);
+        if (!balanceInfo.name){
+          if (!Math.log10) // android 4.4
+            Math.log10 = function(x) { return Math.log(x) * Math.LOG10E; };
+          if (asset === "base"){
+            balanceInfo.name = self.unitName;
+            balanceInfo.decimals = Math.round(Math.log10(config.unitValue));
+          }
+          else if (asset === self.BLACKBYTES_ASSET){
+            balanceInfo.name = self.bbUnitName;
+            balanceInfo.decimals = Math.round(Math.log10(config.bbUnitValue));
+          }
+        }
+      }
+      self.arrBalances.push(balanceInfo);
+      break;
     }
     self.assetIndex = self.assetIndex || 0;
 	if (!self.arrBalances[self.assetIndex]) // if no such index in the subwallet, reset to bytes

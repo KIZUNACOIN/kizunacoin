@@ -42,8 +42,8 @@ msgid "12 words separated by dashes"
 msgstr "12 woorden, gescheiden door streepjes"
 
 #: public/views/preferencesGlobal.html:139
-msgid "About Byteball"
-msgstr "Over Byteball"
+msgid "About Kizunacoin"
+msgstr "Over Kizunacoin"
 
 #: src/js/controllers/copayers.js:8
 #: src/js/controllers/preferencesDelete.js:9
@@ -125,8 +125,8 @@ msgid "All Wallet Addresses"
 msgstr "Allle Portefeuilles"
 
 #: public/views/translators.html:52
-msgid "All contributions to Byteball's translation are welcome. Sign up at crowdin.com and join the Byteball project at"
-msgstr "Alle bijdragen aan de vertaling van Byteball zijn welkom. Meldt u aan bij crowdin.com en sluit u aan bij het Byteball project op"
+msgid "All contributions to Kizunacoin's translation are welcome. Sign up at crowdin.com and join the Kizunacoin project at"
+msgstr "Alle bijdragen aan de vertaling van Kizunacoin zijn welkom. Meldt u aan bij crowdin.com en sluit u aan bij het Kizunacoin project op"
 
 #: public/views/modals/multi-payment.html:56
 msgid "Already Paid"
@@ -179,8 +179,8 @@ msgid "Asset"
 msgstr "Activa"
 
 #: public/views/walletHome.html:534
-msgid "Attest profile data linked to any Byteball address."
-msgstr "Bevestig de profiel gegevens die aan een Byteball adres zijn gekoppeld."
+msgid "Attest profile data linked to any Kizunacoin address."
+msgstr "Bevestig de profiel gegevens die aan een Kizunacoin adres zijn gekoppeld."
 
 #: public/views/walletHome.html:348
 msgid "Attestation"
@@ -283,12 +283,12 @@ msgid "Browser unsupported"
 msgstr "Browser niet ondersteund"
 
 #: public/index.html:12
-msgid "Byteball &mdash; smart payments"
+msgid "KIZUNACOIN Wallet &mdash; smart DAG payments"
 msgstr ""
 
 #: public/views/modals/destination-address.html:119
-msgid "Byteball address"
-msgstr "Byteball adres"
+msgid "Kizunacoin address"
+msgstr "Kizunacoin adres"
 
 #: public/views/includes/password.html:24
 msgid "CANCEL"
@@ -490,8 +490,8 @@ msgid "Could not import. Check input file and password"
 msgstr "Importeren mislukt. Controleer het input bestand en het wachtwoord"
 
 #: src/js/controllers/walletHome.js:53
-msgid "Could not recognize a valid Byteball QR Code"
-msgstr "Dit is geen geldige Byteball QR code"
+msgid "Could not recognize a valid Kizunacoin QR Code"
+msgstr "Dit is geen geldige Kizunacoin QR code"
 
 #: src/js/controllers/walletHome.js:696
 msgid "Could not send payment"
@@ -639,8 +639,8 @@ msgid "Download CSV file"
 msgstr "Download CSV-bestand"
 
 #: public/views/splash.html:26
-msgid "Download the entire Byteball database"
-msgstr "Gehele Byteball-database downloaden"
+msgid "Download the entire Kizunacoin database"
+msgstr "Gehele Kizunacoin-database downloaden"
 
 #: public/views/correspondentDevice.html:26
 #: public/views/modals/destination-address.html:38
@@ -941,8 +941,8 @@ msgid "Multidevice Wallet"
 msgstr "Multi-device portefeuille"
 
 #: public/views/walletHome.html:255
-msgid "My Byteball address"
-msgstr "Mijn Byteball adres"
+msgid "My Kizunacoin address"
+msgstr "Mijn Kizunacoin adres"
 
 #: public/views/correspondentDevice.html:297
 msgid "My recording preference"
@@ -1123,8 +1123,8 @@ msgid "Port"
 msgstr "Poort"
 
 #: public/views/walletHome.html:540
-msgid "Post arbitrary key-value pairs of data into Byteball network."
-msgstr "Post willekeurige sleutelwaarde-paren van gegevens in het Byteball netwerk."
+msgid "Post arbitrary key-value pairs of data into Kizunacoin network."
+msgstr "Post willekeurige sleutelwaarde-paren van gegevens in het Kizunacoin netwerk."
 
 #: public/views/walletHome.html:531
 msgid "Post values into datafeeds manually, be an oracle."
@@ -1622,8 +1622,8 @@ msgid "To be able to restore everything, please create a full backup (find the o
 msgstr "Om alles te kunnen herstellen dient u een volledige backup te maken (zie de optie in het menu)"
 
 #: public/views/walletHome.html:597
-msgid "To be able to send arbitrary data into Byteball network, please switch to a single-address wallet first or create one."
-msgstr "Om willekeurige data in het Byteball netwerk te kunnen verzenden, dient u te wisselen naar een één adres portefeuille, of er een te creëren."
+msgid "To be able to send arbitrary data into Kizunacoin network, please switch to a single-address wallet first or create one."
+msgstr "Om willekeurige data in het Kizunacoin netwerk te kunnen verzenden, dient u te wisselen naar een één adres portefeuille, of er een te creëren."
 
 #: public/views/walletHome.html:449
 msgid "To bind the payment to a condition, please click the peer's address in chat"
@@ -1631,11 +1631,11 @@ msgstr "Om betalingen aan een voorwaarde te verbinden klikt u op het adres van d
 
 #: public/views/walletHome.html:402
 msgid "To byteball address"
-msgstr "Naar Byteball adres"
+msgstr "Naar Kizunacoin adres"
 
 #: public/views/walletHome.html:394
 msgid "To byteball address or email"
-msgstr "Naar Byteball adres of e-mailadres"
+msgstr "Naar Kizunacoin adres of e-mailadres"
 
 #: src/js/controllers/index.js:1434
 msgid "To email"
@@ -1748,8 +1748,8 @@ msgid "WARNINGS:"
 msgstr "WAARSCHUWINGEN:"
 
 #: public/views/splash.html:53
-msgid "WELCOME TO BYTEBALL"
-msgstr "WELKOM BIJ BYTEBALL"
+msgid "WELCOME TO KIZUNACOIN"
+msgstr "WELKOM BIJ KIZUNACOIN"
 
 #: public/views/copayers.html:24
 msgid "Waiting for co-signers"
@@ -1785,8 +1785,8 @@ msgid "Wallet Name (at creation)"
 msgstr "Naam van de Portefeuille (ten tijde van aanmaken)"
 
 #: src/js/services/profileService.js:453
-msgid "Wallet already in Byteball:"
-msgstr "Portefeuille bestaat reeds in Byteball:"
+msgid "Wallet already in Kizunacoin:"
+msgstr "Portefeuille bestaat reeds in Kizunacoin:"
 
 #: public/views/create.html:48
 msgid "Wallet name"
@@ -2011,8 +2011,8 @@ msgid "or"
 msgstr "of"
 
 #: public/views/backup.html:24
-msgid "or backup all Byteball data at"
-msgstr "of backup alle Byteball data op"
+msgid "or backup all Kizunacoin data at"
+msgstr "of backup alle Kizunacoin data op"
 
 #: public/views/modals/offer-contract.html:51
 msgid "peer pays"

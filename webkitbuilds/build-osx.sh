@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # by Andy Maloney
 # http://asmaloney.com/2013/07/howto/packaging-a-mac-os-x-application-using-a-dmg/
 
@@ -10,7 +9,7 @@ if [ -d "$dir" ]; then
 fi
 
 # set up your app name, architecture, and background image file name
-APP_NAME="KIZWALLET"
+APP_NAME="Kizunacoin"
 ARCH="$1"
 DMG_BACKGROUND_IMG="Background.png"
 
@@ -55,8 +54,8 @@ pushd "${STAGING_DIR}"
 
 popd
 
-# Fix size to 350MB
-SIZE=350
+# Fix size to 1000MB
+SIZE=1000
 
 if [ $? -ne 0 ]; then
    echo "Error: Cannot compute size of staging dir"

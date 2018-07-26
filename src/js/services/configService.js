@@ -4,18 +4,18 @@ angular.module('copayApp.services').factory('configService', function(storageSer
   var root = {};
 
 	root.colorOpts = [
-	  '#DD4B39',
-	  '#F38F12',
-	  '#FAA77F',
-	  '#FADA58',
-	  '#9EDD72',
-	  '#77DADA',
-	  '#4A90E2',
-	  '#484ED3',
-	  '#9B59B6',
-	  '#E856EF',
-	  '#FF599E',
-	  '#7A8C9E',
+	  '#00C8DC',
+	  '#00C8DC',
+	  '#00C8DC',
+	  '#00C8DC',
+	  '#00C8DC',
+	  '#00C8DC',
+	  '#00C8DC',
+	  '#00C8DC',
+	  '#00C8DC',
+	  '#00C8DC',
+	  '#00C8DC',
+	  '#00C8DC',
 	];
 
   var constants = require('core/constants.js');
@@ -58,7 +58,7 @@ angular.module('copayApp.services').factory('configService', function(storageSer
 		totalCosigners: 6
 	},
 
-	hub: (constants.alt === '2' && isTestnet) ? 'byteball.org/bb-test' : 'byteball.org/bb',
+	hub: (constants.alt === '2' && isTestnet) ? 'byteball.org/bb-test' : 'hub.kizunacoin.jp',
 	attestorAddresses: {
 		email: 'H5EZTQE7ABFH27AUDTQFMZIALANK6RBG',
 		reddit: 'OYW2XTDKSNKGSEZ27LMGNOPJSYIXHBHC',
@@ -82,7 +82,7 @@ angular.module('copayApp.services').factory('configService', function(storageSer
 	  singleAddress: false,
 	  settings: {
 		unitName: 'KIZ',
-		unitValue: 1,
+		unitValue: 1000000,
 		unitDecimals: 6,
 		unitCode: 'one',
 		bbUnitName: 'blackbytes',
@@ -130,8 +130,10 @@ angular.module('copayApp.services').factory('configService', function(storageSer
   root.get = function(cb) {
 
 	storageService.getConfig(function(err, localConfig) {
-	  configCache = migrateLocalConfig(localConfig);
-	  $log.debug('Preferences read:', configCache);
+		$log.debug('******local config :', localConfig);
+		configCache = migrateLocalConfig(localConfig);
+		
+		$log.debug('Preferences read:', configCache);
 	  return cb(err, configCache);
 	});
   };
@@ -150,14 +152,13 @@ angular.module('copayApp.services').factory('configService', function(storageSer
 	  }
 	  lodash.merge(config, oldOpts, newOpts);
 		checkAndReplaceOldUnitCode(config.wallet.settings);
-	  configCache = config;
-
+	  configCache = config;		
 	  storageService.storeConfig(JSON.stringify(config), cb);
 	});
   };
 
   root.reset = function(cb) {
-	configCache = lodash.clone(defaultConfig);
+	configCache = lodash.clone(defaultConfig);	
 	storageService.removeConfig(cb);
   };
 
@@ -166,7 +167,7 @@ angular.module('copayApp.services').factory('configService', function(storageSer
   };
   
   if(window.config){
-	configCache = migrateLocalConfig(window.config);
+	configCache = migrateLocalConfig(window.config);	
   }else{
 	root.get(function() {});
   }
@@ -228,7 +229,7 @@ angular.module('copayApp.services').factory('configService', function(storageSer
 	  switch (setting.unitCode){
 		  case 'byte':
 				setting.unitCode = 'one';
-				setting.unitValue = 1;
+				setting.unitValue = 1000000;
 		  	break;
 		  case 'kB':
 				setting.unitCode = 'kilo';

@@ -22,7 +22,7 @@ Constants.UNITS = {
     minDecimals: 0,
   },*/
   one: {
-    value: 1,
+    value: 1000000,
     maxDecimals: 0,
     minDecimals: 0,
   },

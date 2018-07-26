@@ -71,7 +71,7 @@
 
 
 .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p, .panel li, .panel dl {
-  color: #2C3E50;
+  color: #00C8DC;
 }
 
 #qr-canvas { display: none; }
@@ -87,7 +87,7 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #2C3E50;
+  color: #00C8DC;
 }
 
 h1 {
@@ -112,7 +112,7 @@ h4.title {
   background: #F1F3F5;
   padding: 0.8rem;
   text-transform: uppercase;
-  color: #2C3E50;
+  color: #00C8DC;
   font-weight: 700;
   font-size: 0.7rem;
 }
@@ -169,7 +169,7 @@ h4.title a {
   margin-bottom: 1.5rem;
   background-color: #E4E8EC;
   padding-left: 0.5rem;
-  color: #2C3E50;
+  color: #00C8DC;
   font-size: 13px;
   height: 35px;
   padding-top: 7px;
@@ -197,7 +197,7 @@ ul.button-group li:last-child {
 }
 
 ul.button-group li {
-  color: #A5B2BF;
+  color: #5e5e5e;
   cursor: pointer;
   text-transform: uppercase;
   font-size: 0.7rem;
@@ -221,7 +221,7 @@ ul.button-group li.selected {
 body, html{
   height:100%;
   width:100%;
-  color: #2C3E50;
+  color: #00C8DC;
   -webkit-user-select: text;
 }
 
@@ -296,7 +296,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill, inpu
 }
 
 .main-dark {
-  background-color: #2C3E50;
+  background-color: #00C8DC;
   height: 100%;
 }
 
@@ -455,7 +455,7 @@ ul.tx-copayers {
 .send-note span {
   margin-bottom: 5px;
   font-size: 12px;
-  color: #2C3E50;
+  color: #00C8DC;
 }
 
 .manage a {
@@ -640,7 +640,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .tx-proposal i {
   padding: .1rem .3rem;
-  background-color: #A5B2BF;
+  background-color: #5e5e5e;
   border-radius: 100%;
   color: #fff;
 }
@@ -714,18 +714,18 @@ input[type="color"], input[type="date"], input[type="datetime-local"], input[typ
   border: none;
   padding-left: 0.1rem;
   font-size: 13px;
-  border-bottom: 1px solid #A5B2BF;
+  border-bottom: 1px solid #5e5e5e;
 }
 
 input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="color"]:focus, textarea:focus {
   color: #34495E;
-  border-color: #A5B2BF;
+  border-color: #5e5e5e;
   background: transparent;
 }
 
 input[type="text"][disabled], input[type="text"][readonly], fieldset[disabled] input[type="text"], input[type="password"][disabled], input[type="password"][readonly], fieldset[disabled] input[type="password"], input[type="date"][disabled], input[type="date"][readonly], fieldset[disabled] input[type="date"], input[type="datetime"][disabled], input[type="datetime"][readonly], fieldset[disabled] input[type="datetime"], input[type="datetime-local"][disabled], input[type="datetime-local"][readonly], fieldset[disabled] input[type="datetime-local"], input[type="month"][disabled], input[type="month"][readonly], fieldset[disabled] input[type="month"], input[type="week"][disabled], input[type="week"][readonly], fieldset[disabled] input[type="week"], input[type="email"][disabled], input[type="email"][readonly], fieldset[disabled] input[type="email"], input[type="number"][disabled], input[type="number"][readonly], fieldset[disabled] input[type="number"], input[type="search"][disabled], input[type="search"][readonly], fieldset[disabled] input[type="search"], input[type="tel"][disabled], input[type="tel"][readonly], fieldset[disabled] input[type="tel"], input[type="time"][disabled], input[type="time"][readonly], fieldset[disabled] input[type="time"], input[type="url"][disabled], input[type="url"][readonly], fieldset[disabled] input[type="url"], input[type="color"][disabled], input[type="color"][readonly], fieldset[disabled] input[type="color"], textarea[disabled], textarea[readonly], fieldset[disabled] textarea {
   background-color: #E4E8EC;
-  color: #2C3E50;
+  color: #00C8DC;
   padding-left: 0.5rem;
   opacity: 1;
 }
@@ -733,7 +733,7 @@ input[type="text"][disabled], input[type="text"][readonly], fieldset[disabled] i
 select {
   background-color: transparent;
   color: #7A8C9E;
-  border-color: #A5B2BF;
+  border-color: #5e5e5e;
 }
 
 label {
@@ -838,8 +838,8 @@ button.outline.dark-gray,
 button.outline.dark-gray:hover,
 button.outline.dark-gray:focus {
   background-color: transparent;
-  border: 1px solid #A5B2BF;
-  color: #A5B2BF;
+  border: 1px solid #5e5e5e;
+  color: #5e5e5e;
 }
 
 .button.outline.light-gray,
@@ -905,7 +905,7 @@ button.white:focus,
 .button.white:hover,
 .button.white:focus {
   background-color: #fff;
-  color: #2C3E50;
+  color: #00C8DC;
 }
 
 /* BLACK */
@@ -915,7 +915,7 @@ button.black:focus,
 .button.black,
 .button.black:hover,
 .button.black:focus {
-  background-color: #2C3E50;
+  background-color: #00C8DC;
   color: #fff;
 }
 
@@ -927,12 +927,12 @@ button.gray:focus,
 .button.gray:hover,
 .button.gray:focus {
   background-color: #A9B2B8;
-  color: #2C3E50;
+  color: #00C8DC;
 }
 
 button.disabled, button[disabled], .button.disabled, .button[disabled] {
   border-color: transparent !important;
-  background-color: #A5B2BF !important;
+  background-color: #5e5e5e !important;
   color: #fff !important;
 }
 
@@ -1058,13 +1058,13 @@ input.ng-invalid-match, input.ng-invalid-match:focus {
 }
 
 .black {
-  background-color: #2C3E50;
+  background-color: #00C8DC;
 }
 .text-italic {font-style: italic;}
 .text-light {font-weight: 200;}
 .text-bold {font-weight: 700;}
-.text-gray {color: #8597A7;}
-.text-black {color: #2C3E50;}
+.text-gray {color: #5e5e5e;}
+.text-black {color: #00C8DC;}
 .text-primary {color: #1ABC9C;}
 .text-secondary {color: #3498DB;}
 .text-white {color: #fff;}
@@ -1184,7 +1184,7 @@ input.ng-invalid-match, input.ng-invalid-match:focus {
   z-index: 999;
   top: 0;
   left: 0;
-  background-color: #2C3E50;
+  background-color: #00C8DC;
 }
 
 .loading-screen-content {
@@ -1321,24 +1321,21 @@ input.ng-invalid-match, input.ng-invalid-match:focus {
 
 .settings fieldset legend {
   background: transparent;
-  color: #A5B2BF;
+  color: #5e5e5e;
 }
 
 .settings label {
-  color: #A5B2BF;
+  color: #5e5e5e;
   font-weight: normal;
 }
 
 .splash {
   top: 0;
-  background: #2C3E50;
-  background-image: -webkit-linear-gradient(#3D5672 0%, #223243 100%);
-  background-image: -o-linear-gradient(#3D5672 0%, #223243 100%);
-  background-image: linear-gradient(#3D5672 0%, #223243 100%);
+  background: #00C8DC;  
 }
 
 .splash .start-button button.black {
-  background-color: #4B6178;
+  background-color: #0096A5;
 }
 
 .splash .start-button button.outline.tiny {

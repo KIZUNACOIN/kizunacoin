@@ -23,7 +23,8 @@ angular.module('copayApp.services')
 		if (asset === 'blackbytes' || asset === constants.BLACKBYTES_ASSET)
 			return this.Utils.formatAmount(amount, config.bbUnitCode, opts);
 		else if (asset === 'base' || asset === 'bytes')
-			return this.Utils.formatAmount(amount, config.unitCode, opts);
+      return this.Utils.formatAmount(amount, config.unitCode, opts);
+      
 		else if (root.assetMetadata[asset]){
 			var decimals = root.assetMetadata[asset].decimals || 0;
 			return (amount / Math.pow(10, decimals)).toLocaleString([], {maximumFractionDigits: decimals});
@@ -453,7 +454,7 @@ angular.module('copayApp.services')
         // check if exists
         var w = lodash.find(root.profile.credentials, { 'walletId': walletId });
         if (w)
-            return cb(gettext('Wallet already in Byteball' + ": ") + w.walletName);
+            return cb(gettext('Wallet already in Kizunacoin' + ": ") + w.walletName);
 
         root.profile.credentials.push(JSON.parse(walletClient.export()));
         root.setWalletClients();
@@ -731,7 +732,7 @@ angular.module('copayApp.services')
           name: config.aliasFor[c.walletId] || c.walletName,
           id: c.walletId,
           network: c.network,
-          color: config.colorFor[c.walletId] || '#2C3E50'
+          color: config.colorFor[c.walletId] || '#00C8DC'
         };
       });
       ret = lodash.filter(ret, function(w) {

@@ -86,8 +86,8 @@ function initWallet() {
 
 	function setWalletNameAndColor(walletName) {
 		if(completeClientLoaded) return;
-		var color = root.config.colorFor ? root.config.colorFor[root.focusedClient.credentials.walletId] : '#4A90E2';
-		if(!color) color = '#4A90E2';
+		var color = root.config.colorFor ? root.config.colorFor[root.focusedClient.credentials.walletId] : '#00C8DC';
+		if(!color) color = '#00C8DC';
 		getFromId('name1Color').style.color = color;
 		getFromId('name1').innerHTML = walletName;
 		getFromId('name2').innerHTML = walletName;
@@ -129,7 +129,7 @@ function initWallet() {
 			var walletId = credentials.walletId;
 
 			html += '<li onclick="wallet.selectWallet(\'' + walletId + '\')" id="w' + walletId + '" class="nav-item ' + (walletId === selectedWalletId ? 'selected' : '') + '">' +
-				'<a class="oh"><div class="avatar-wallet " style="background-color: ' + (colors && colors[walletId] ? colors[walletId] : '#4A90E2') + '">' + credentials.walletName.substr(0, 1) + ' </div>' +
+				'<a class="oh"><div class="avatar-wallet " style="background-color: ' + (colors && colors[walletId] ? colors[walletId] : '#00C8DC') + '">' + credentials.walletName.substr(0, 1) + ' </div>' +
 				'<div class="name-wallet m8t">' + credentials.walletName + '</div></a></li>';
 		}
 

@@ -5,7 +5,7 @@
 #define MyAppPackageName "Kizunacoin"
 #define MyAppVersion "2.4.1"
 #define MyAppPublisher "Kizunacoin"
-#define MyAppURL "https://byteball.org"
+#define MyAppURL "https://kizunacoin.jp"
 #define MyAppExeName "Kizunacoin.exe"
 
 [Setup]

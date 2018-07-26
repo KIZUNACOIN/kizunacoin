@@ -30,7 +30,7 @@ msgid "12 words separated by dashes"
 msgstr ""
 
 #: public/views/preferencesGlobal.html:135
-msgid "About Byteball"
+msgid "About Kizunacoin"
 msgstr ""
 
 #: src/js/controllers/copayers.js:8
@@ -109,7 +109,7 @@ msgid "All Wallet Addresses"
 msgstr ""
 
 #: public/views/translators.html:52
-msgid "All contributions to Byteball's translation are welcome. Sign up at crowdin.com and join the Byteball project at"
+msgid "All contributions to Kizunacoin's translation are welcome. Sign up at crowdin.com and join the Kizunacoin project at"
 msgstr ""
 
 #: public/views/modals/multi-payment.html:56
@@ -159,7 +159,7 @@ msgid "Asset"
 msgstr ""
 
 #: public/views/walletHome.html:496
-msgid "Attest profile data linked to any Byteball address."
+msgid "Attest profile data linked to any Kizunacoin address."
 msgstr ""
 
 #: public/views/walletHome.html:333
@@ -241,7 +241,7 @@ msgid "Browser unsupported"
 msgstr ""
 
 #: public/views/modals/destination-address.html:119
-msgid "Byteball address"
+msgid "Kizunacoin address"
 msgstr ""
 
 #: public/views/includes/password.html:24
@@ -416,7 +416,7 @@ msgid "Could not import. Check input file and password"
 msgstr ""
 
 #: src/js/controllers/walletHome.js:51
-msgid "Could not recognize a valid Byteball QR Code"
+msgid "Could not recognize a valid Kizunacoin QR Code"
 msgstr ""
 
 #: src/js/controllers/walletHome.js:668
@@ -545,7 +545,7 @@ msgid "Download CSV file"
 msgstr ""
 
 #: public/views/splash.html:26
-msgid "Download the entire Byteball database"
+msgid "Download the entire Kizunacoin database"
 msgstr ""
 
 #: public/views/correspondentDevice.html:26
@@ -807,7 +807,7 @@ msgid "Multidevice Wallet"
 msgstr ""
 
 #: public/views/walletHome.html:240
-msgid "My Byteball address"
+msgid "My Kizunacoin address"
 msgstr ""
 
 #: public/views/correspondentDevice.html:297
@@ -975,7 +975,7 @@ msgid "Port"
 msgstr ""
 
 #: public/views/walletHome.html:502
-msgid "Post arbitrary key-value pairs of data into Byteball network."
+msgid "Post arbitrary key-value pairs of data into Kizunacoin network."
 msgstr ""
 
 #: public/views/walletHome.html:493
@@ -1414,7 +1414,7 @@ msgid "To be able to restore everything, please create a full backup (find the o
 msgstr ""
 
 #: public/views/walletHome.html:558
-msgid "To be able to send arbitrary data into Byteball network, please switch to a single-address wallet first or create one."
+msgid "To be able to send arbitrary data into Kizunacoin network, please switch to a single-address wallet first or create one."
 msgstr ""
 
 #: public/views/walletHome.html:420
@@ -1520,7 +1520,7 @@ msgid "WARNINGS:"
 msgstr ""
 
 #: public/views/splash.html:53
-msgid "WELCOME TO BYTEBALL"
+msgid "WELCOME TO KIZUNACOIN"
 msgstr ""
 
 #: public/views/copayers.html:24
@@ -1557,7 +1557,7 @@ msgid "Wallet Name (at creation)"
 msgstr ""
 
 #: src/js/services/profileService.js:436
-msgid "Wallet already in Byteball:"
+msgid "Wallet already in Kizunacoin:"
 msgstr ""
 
 #: public/views/create.html:48
@@ -1750,7 +1750,7 @@ msgid "or"
 msgstr ""
 
 #: public/views/backup.html:24
-msgid "or backup all Byteball data at"
+msgid "or backup all Kizunacoin data at"
 msgstr ""
 
 #: public/views/modals/offer-contract.html:51

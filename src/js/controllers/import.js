@@ -59,6 +59,7 @@ angular.module('copayApp.controllers').controller('importController',
 					}
 					else if (key == 'config') {
 						zip.file(key).async('string').then(function(data) {
+							console.log("*********   datatatatattat : " + data);
 							storageService.storeConfig(data, callback);
 						});
 					}
@@ -91,6 +92,7 @@ angular.module('copayApp.controllers').controller('importController',
 					function(callback) {
 						fileSystemService.readFile(dbDirPath + 'temp/' + 'config', function(err, data) {
 							if(err) return callback(err);
+							console.log("*********   datatatatattat : " + data);
 							storageService.storeConfig(data.toString(), callback);
 						});
 					},

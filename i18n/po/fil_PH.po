@@ -42,8 +42,8 @@ msgid "12 words separated by dashes"
 msgstr "12 na salita na pinaghihiwalay ng mga gitling"
 
 #: public/views/preferencesGlobal.html:139
-msgid "About Byteball"
-msgstr "Tungkol sa Byteball"
+msgid "About Kizunacoin"
+msgstr "Tungkol sa Kizunacoin"
 
 #: src/js/controllers/copayers.js:8
 #: src/js/controllers/preferencesDelete.js:9
@@ -125,8 +125,8 @@ msgid "All Wallet Addresses"
 msgstr "Lahat ng mga Address ng Pitaka"
 
 #: public/views/translators.html:52
-msgid "All contributions to Byteball's translation are welcome. Sign up at crowdin.com and join the Byteball project at"
-msgstr "Lahat ng kontribusyon para sa pagsasalin sa Byteball ay malugod na tinatanggap. Mag-sign up sa crowdin.com at sumali sa Byteball na proyekto sa"
+msgid "All contributions to Kizunacoin's translation are welcome. Sign up at crowdin.com and join the Kizunacoin project at"
+msgstr "Lahat ng kontribusyon para sa pagsasalin sa Kizunacoin ay malugod na tinatanggap. Mag-sign up sa crowdin.com at sumali sa Kizunacoin na proyekto sa"
 
 #: public/views/modals/multi-payment.html:56
 msgid "Already Paid"
@@ -179,8 +179,8 @@ msgid "Asset"
 msgstr "Ari-arian"
 
 #: public/views/walletHome.html:534
-msgid "Attest profile data linked to any Byteball address."
-msgstr "I-Attest ang profile data na naka-link sa anumang Byteball address."
+msgid "Attest profile data linked to any Kizunacoin address."
+msgstr "I-Attest ang profile data na naka-link sa anumang Kizunacoin address."
 
 #: public/views/walletHome.html:348
 msgid "Attestation"
@@ -283,12 +283,12 @@ msgid "Browser unsupported"
 msgstr "Hindi supportadong browser"
 
 #: public/index.html:12
-msgid "Byteball &mdash; smart payments"
+msgid "KIZUNACOIN Wallet &mdash; smart DAG payments"
 msgstr ""
 
 #: public/views/modals/destination-address.html:119
-msgid "Byteball address"
-msgstr "Byteball address"
+msgid "Kizunacoin address"
+msgstr "Kizunacoin address"
 
 #: public/views/includes/password.html:24
 msgid "CANCEL"
@@ -490,8 +490,8 @@ msgid "Could not import. Check input file and password"
 msgstr "Hindi maaring mainport. Suriin ang input file at password"
 
 #: src/js/controllers/walletHome.js:53
-msgid "Could not recognize a valid Byteball QR Code"
-msgstr "Hindi nakilala ang isang balidong Byteball QR Code"
+msgid "Could not recognize a valid Kizunacoin QR Code"
+msgstr "Hindi nakilala ang isang balidong Kizunacoin QR Code"
 
 #: src/js/controllers/walletHome.js:696
 msgid "Could not send payment"
@@ -639,8 +639,8 @@ msgid "Download CSV file"
 msgstr "I-download ang CSV file"
 
 #: public/views/splash.html:26
-msgid "Download the entire Byteball database"
-msgstr "I-download ang buong database ng Byteball"
+msgid "Download the entire Kizunacoin database"
+msgstr "I-download ang buong database ng Kizunacoin"
 
 #: public/views/correspondentDevice.html:26
 #: public/views/modals/destination-address.html:38
@@ -940,8 +940,8 @@ msgid "Multidevice Wallet"
 msgstr "Multidevice na pitaka"
 
 #: public/views/walletHome.html:255
-msgid "My Byteball address"
-msgstr "Aking Byteball address"
+msgid "My Kizunacoin address"
+msgstr "Aking Kizunacoin address"
 
 #: public/views/correspondentDevice.html:297
 msgid "My recording preference"
@@ -1122,8 +1122,8 @@ msgid "Port"
 msgstr "Port"
 
 #: public/views/walletHome.html:540
-msgid "Post arbitrary key-value pairs of data into Byteball network."
-msgstr "Mag-post ng mga pares ng makatwirang halaga ng susi ng mga datos sa Byteball newtork."
+msgid "Post arbitrary key-value pairs of data into Kizunacoin network."
+msgstr "Mag-post ng mga pares ng makatwirang halaga ng susi ng mga datos sa Kizunacoin newtork."
 
 #: public/views/walletHome.html:531
 msgid "Post values into datafeeds manually, be an oracle."
@@ -1621,8 +1621,8 @@ msgid "To be able to restore everything, please create a full backup (find the o
 msgstr "Upang maibalik ang lahat na bagay, mangyaring lumikha ng isang buong backup (hanapin sa mga pagpipilian sa menu)"
 
 #: public/views/walletHome.html:597
-msgid "To be able to send arbitrary data into Byteball network, please switch to a single-address wallet first or create one."
-msgstr "Upang magagawang magpadala ng mga di-makatwirang datos sa Byteball network, mangyaring lumipat sa isang solong-address na pitaka muna o lumikha ng isa."
+msgid "To be able to send arbitrary data into Kizunacoin network, please switch to a single-address wallet first or create one."
+msgstr "Upang magagawang magpadala ng mga di-makatwirang datos sa Kizunacoin network, mangyaring lumipat sa isang solong-address na pitaka muna o lumikha ng isa."
 
 #: public/views/walletHome.html:449
 msgid "To bind the payment to a condition, please click the peer's address in chat"
@@ -1747,8 +1747,8 @@ msgid "WARNINGS:"
 msgstr "MGA BABALA:"
 
 #: public/views/splash.html:53
-msgid "WELCOME TO BYTEBALL"
-msgstr "MALIGAYANG PAGDATING SA BYTEBALL"
+msgid "WELCOME TO KIZUNACOIN"
+msgstr "MALIGAYANG PAGDATING SA KIZUNACOIN"
 
 #: public/views/copayers.html:24
 msgid "Waiting for co-signers"
@@ -1784,8 +1784,8 @@ msgid "Wallet Name (at creation)"
 msgstr "Pangalan ng Pitaka (sa paglikha)"
 
 #: src/js/services/profileService.js:453
-msgid "Wallet already in Byteball:"
-msgstr "Pitaka na nasa Byteball na:"
+msgid "Wallet already in Kizunacoin:"
+msgstr "Pitaka na nasa Kizunacoin na:"
 
 #: public/views/create.html:48
 msgid "Wallet name"
@@ -2010,8 +2010,8 @@ msgid "or"
 msgstr "o"
 
 #: public/views/backup.html:24
-msgid "or backup all Byteball data at"
-msgstr "o i-backup lahat ng mga datos ng Byteball sa"
+msgid "or backup all Kizunacoin data at"
+msgstr "o i-backup lahat ng mga datos ng Kizunacoin sa"
 
 #: public/views/modals/offer-contract.html:51
 msgid "peer pays"

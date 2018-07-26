@@ -42,8 +42,8 @@ msgid "12 words separated by dashes"
 msgstr "12 kata-kata yang dipisahkan oleh tanda hubung"
 
 #: public/views/preferencesGlobal.html:139
-msgid "About Byteball"
-msgstr "Tentang Byteball"
+msgid "About Kizunacoin"
+msgstr "Tentang Kizunacoin"
 
 #: src/js/controllers/copayers.js:8
 #: src/js/controllers/preferencesDelete.js:9
@@ -125,8 +125,8 @@ msgid "All Wallet Addresses"
 msgstr "Semua Alamat Dompet"
 
 #: public/views/translators.html:52
-msgid "All contributions to Byteball's translation are welcome. Sign up at crowdin.com and join the Byteball project at"
-msgstr "Semua kontribusi penerjemahan Byteball akan diterima dengan senang hati. Daftar di crowdin.com dan bergabung dengan proyek Byteball di"
+msgid "All contributions to Kizunacoin's translation are welcome. Sign up at crowdin.com and join the Kizunacoin project at"
+msgstr "Semua kontribusi penerjemahan Kizunacoin akan diterima dengan senang hati. Daftar di crowdin.com dan bergabung dengan proyek Kizunacoin di"
 
 #: public/views/modals/multi-payment.html:56
 msgid "Already Paid"
@@ -179,8 +179,8 @@ msgid "Asset"
 msgstr "Aset"
 
 #: public/views/walletHome.html:534
-msgid "Attest profile data linked to any Byteball address."
-msgstr "Mengesahkan data profil terkait dengan alamat Byteball."
+msgid "Attest profile data linked to any Kizunacoin address."
+msgstr "Mengesahkan data profil terkait dengan alamat Kizunacoin."
 
 #: public/views/walletHome.html:348
 msgid "Attestation"
@@ -283,12 +283,12 @@ msgid "Browser unsupported"
 msgstr "Peramban tidak didukung"
 
 #: public/index.html:12
-msgid "Byteball &mdash; smart payments"
+msgid "KIZUNACOIN Wallet &mdash; smart DAG payments"
 msgstr ""
 
 #: public/views/modals/destination-address.html:119
-msgid "Byteball address"
-msgstr "Alamat Byteball"
+msgid "Kizunacoin address"
+msgstr "Alamat Kizunacoin"
 
 #: public/views/includes/password.html:24
 msgid "CANCEL"
@@ -490,8 +490,8 @@ msgid "Could not import. Check input file and password"
 msgstr "Tidak dapat mengimpor. Periksa masukkan kata kunci dan berkas"
 
 #: src/js/controllers/walletHome.js:53
-msgid "Could not recognize a valid Byteball QR Code"
-msgstr "Tidak dapat mengenali Kode QR Byteball yang benar"
+msgid "Could not recognize a valid Kizunacoin QR Code"
+msgstr "Tidak dapat mengenali Kode QR Kizunacoin yang benar"
 
 #: src/js/controllers/walletHome.js:696
 msgid "Could not send payment"
@@ -639,8 +639,8 @@ msgid "Download CSV file"
 msgstr "Unduh berkas CSV"
 
 #: public/views/splash.html:26
-msgid "Download the entire Byteball database"
-msgstr "Mengunduh seluruh database Byteball"
+msgid "Download the entire Kizunacoin database"
+msgstr "Mengunduh seluruh database Kizunacoin"
 
 #: public/views/correspondentDevice.html:26
 #: public/views/modals/destination-address.html:38
@@ -941,8 +941,8 @@ msgid "Multidevice Wallet"
 msgstr "Dompet Multiperangkat"
 
 #: public/views/walletHome.html:255
-msgid "My Byteball address"
-msgstr "Alamat Byteball saya"
+msgid "My Kizunacoin address"
+msgstr "Alamat Kizunacoin saya"
 
 #: public/views/correspondentDevice.html:297
 msgid "My recording preference"
@@ -1123,8 +1123,8 @@ msgid "Port"
 msgstr "Port"
 
 #: public/views/walletHome.html:540
-msgid "Post arbitrary key-value pairs of data into Byteball network."
-msgstr "Terbitkan data pasangan kunci-nilai arbitrary ke jaringan Byteball."
+msgid "Post arbitrary key-value pairs of data into Kizunacoin network."
+msgstr "Terbitkan data pasangan kunci-nilai arbitrary ke jaringan Kizunacoin."
 
 #: public/views/walletHome.html:531
 msgid "Post values into datafeeds manually, be an oracle."
@@ -1622,8 +1622,8 @@ msgid "To be able to restore everything, please create a full backup (find the o
 msgstr "Untuk dapat mengembalikan segalanya, silakan membuat cadangan lengkap (pilihan tersedia pada menu)"
 
 #: public/views/walletHome.html:597
-msgid "To be able to send arbitrary data into Byteball network, please switch to a single-address wallet first or create one."
-msgstr "Agar dapat mengirim data yang berubah-ubah ke jaringan Byteball, silakan beralih ke dompet alamat tunggal terlebih dahulu atau buat yang baru."
+msgid "To be able to send arbitrary data into Kizunacoin network, please switch to a single-address wallet first or create one."
+msgstr "Agar dapat mengirim data yang berubah-ubah ke jaringan Kizunacoin, silakan beralih ke dompet alamat tunggal terlebih dahulu atau buat yang baru."
 
 #: public/views/walletHome.html:449
 msgid "To bind the payment to a condition, please click the peer's address in chat"
@@ -1748,8 +1748,8 @@ msgid "WARNINGS:"
 msgstr "PERINGATAN:"
 
 #: public/views/splash.html:53
-msgid "WELCOME TO BYTEBALL"
-msgstr "SELAMAT DATANG DI BYTEBALL"
+msgid "WELCOME TO KIZUNACOIN"
+msgstr "SELAMAT DATANG DI KIZUNACOIN"
 
 #: public/views/copayers.html:24
 msgid "Waiting for co-signers"
@@ -1785,8 +1785,8 @@ msgid "Wallet Name (at creation)"
 msgstr "Nama Dompet (saat dibuat)"
 
 #: src/js/services/profileService.js:453
-msgid "Wallet already in Byteball:"
-msgstr "Dompet sudah ada di Byteball:"
+msgid "Wallet already in Kizunacoin:"
+msgstr "Dompet sudah ada di Kizunacoin:"
 
 #: public/views/create.html:48
 msgid "Wallet name"
@@ -2011,8 +2011,8 @@ msgid "or"
 msgstr "atau"
 
 #: public/views/backup.html:24
-msgid "or backup all Byteball data at"
-msgstr "atau cadangan semua data Byteball di"
+msgid "or backup all Kizunacoin data at"
+msgstr "atau cadangan semua data Kizunacoin di"
 
 #: public/views/modals/offer-contract.html:51
 msgid "peer pays"

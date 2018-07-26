@@ -268,4 +268,3 @@ if [ $CURRENT_OS == "WP8" ]; then
 	fi
 fi
 
-

@@ -42,8 +42,8 @@ msgid "12 words separated by dashes"
 msgstr ""
 
 #: public/views/preferencesGlobal.html:139
-msgid "About Byteball"
-msgstr "Om Byteball"
+msgid "About Kizunacoin"
+msgstr "Om Kizunacoin"
 
 #: src/js/controllers/copayers.js:8
 #: src/js/controllers/preferencesDelete.js:9
@@ -125,8 +125,8 @@ msgid "All Wallet Addresses"
 msgstr "Alla plånboksaddresser"
 
 #: public/views/translators.html:52
-msgid "All contributions to Byteball's translation are welcome. Sign up at crowdin.com and join the Byteball project at"
-msgstr "Alla bidrag till Byteballs översättningar är välkomna. Skriv upp på crowdin.com och anslut till Byteball projektet."
+msgid "All contributions to Kizunacoin's translation are welcome. Sign up at crowdin.com and join the Kizunacoin project at"
+msgstr "Alla bidrag till Kizunacoins översättningar är välkomna. Skriv upp på crowdin.com och anslut till Kizunacoin projektet."
 
 #: public/views/modals/multi-payment.html:56
 msgid "Already Paid"
@@ -179,7 +179,7 @@ msgid "Asset"
 msgstr "Tillgång"
 
 #: public/views/walletHome.html:534
-msgid "Attest profile data linked to any Byteball address."
+msgid "Attest profile data linked to any Kizunacoin address."
 msgstr ""
 
 #: public/views/walletHome.html:348
@@ -283,11 +283,11 @@ msgid "Browser unsupported"
 msgstr "Web-läsare inte understödd"
 
 #: public/index.html:12
-msgid "Byteball &mdash; smart payments"
+msgid "KIZUNACOIN Wallet &mdash; smart DAG payments"
 msgstr ""
 
 #: public/views/modals/destination-address.html:119
-msgid "Byteball address"
+msgid "Kizunacoin address"
 msgstr ""
 
 #: public/views/includes/password.html:24
@@ -490,8 +490,8 @@ msgid "Could not import. Check input file and password"
 msgstr ""
 
 #: src/js/controllers/walletHome.js:53
-msgid "Could not recognize a valid Byteball QR Code"
-msgstr "Kunde inte känna igen en giltig Byteball QR Kod"
+msgid "Could not recognize a valid Kizunacoin QR Code"
+msgstr "Kunde inte känna igen en giltig Kizunacoin QR Kod"
 
 #: src/js/controllers/walletHome.js:696
 msgid "Could not send payment"
@@ -639,7 +639,7 @@ msgid "Download CSV file"
 msgstr "Ladda ner CSV-fil"
 
 #: public/views/splash.html:26
-msgid "Download the entire Byteball database"
+msgid "Download the entire Kizunacoin database"
 msgstr ""
 
 #: public/views/correspondentDevice.html:26
@@ -941,8 +941,8 @@ msgid "Multidevice Wallet"
 msgstr "Multienhets-plånbok"
 
 #: public/views/walletHome.html:255
-msgid "My Byteball address"
-msgstr "Min Byteball address"
+msgid "My Kizunacoin address"
+msgstr "Min Kizunacoin address"
 
 #: public/views/correspondentDevice.html:297
 msgid "My recording preference"
@@ -1123,7 +1123,7 @@ msgid "Port"
 msgstr "Port"
 
 #: public/views/walletHome.html:540
-msgid "Post arbitrary key-value pairs of data into Byteball network."
+msgid "Post arbitrary key-value pairs of data into Kizunacoin network."
 msgstr ""
 
 #: public/views/walletHome.html:531
@@ -1622,7 +1622,7 @@ msgid "To be able to restore everything, please create a full backup (find the o
 msgstr ""
 
 #: public/views/walletHome.html:597
-msgid "To be able to send arbitrary data into Byteball network, please switch to a single-address wallet first or create one."
+msgid "To be able to send arbitrary data into Kizunacoin network, please switch to a single-address wallet first or create one."
 msgstr ""
 
 #: public/views/walletHome.html:449
@@ -1748,8 +1748,8 @@ msgid "WARNINGS:"
 msgstr "VARNINGAR:"
 
 #: public/views/splash.html:53
-msgid "WELCOME TO BYTEBALL"
-msgstr "VÄLKOMMEN TILL BYTEBALL"
+msgid "WELCOME TO KIZUNACOIN"
+msgstr "VÄLKOMMEN TILL KIZUNACOIN"
 
 #: public/views/copayers.html:24
 msgid "Waiting for co-signers"
@@ -1785,7 +1785,7 @@ msgid "Wallet Name (at creation)"
 msgstr ""
 
 #: src/js/services/profileService.js:453
-msgid "Wallet already in Byteball:"
+msgid "Wallet already in Kizunacoin:"
 msgstr ""
 
 #: public/views/create.html:48
@@ -2011,7 +2011,7 @@ msgid "or"
 msgstr "eller"
 
 #: public/views/backup.html:24
-msgid "or backup all Byteball data at"
+msgid "or backup all Kizunacoin data at"
 msgstr ""
 
 #: public/views/modals/offer-contract.html:51
