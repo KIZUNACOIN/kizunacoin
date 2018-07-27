@@ -2,12 +2,12 @@
 Type=Application
 Version=1.0
 Name=Kizunacoin
-Comment=Smart payments made simple
+Comment=Smart DAG payments
 Exec=bash -c 'cd $(dirname %k) && ./Kizunacoin %u'
 Icon=logo-circle-256.png
 Terminal=false
 Categories=Office;Finance;
-MimeType=x-scheme-handler/byteball;
+MimeType=x-scheme-handler/kizunacoin;
 X-Ubuntu-Touch=true
 X-Ubuntu-StageHint=SideStage
 
