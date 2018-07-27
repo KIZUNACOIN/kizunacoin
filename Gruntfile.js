@@ -228,7 +228,7 @@ module.exports = function(grunt) {
       		}],
       		CFBundleDocumentTypes: [{
       			CFBundleTypeName: "Kizunacoin Private Coin",
-      			LSItemContentTypes: ["org.byteball.coin"],
+      			LSItemContentTypes: ["org.kizunacoin.coin"],
       			CFBundleTypeIconFile: "app.icns"
       		}]
           }
@@ -238,21 +238,21 @@ module.exports = function(grunt) {
     compress: {
       linux32: {
         options: {
-          archive: '../byteballbuilds/byteball-linux32.zip'
+          archive: '../byteballbuilds/kizunacoin-linux32.zip'
         },
         expand: true,
         cwd: '../byteballbuilds/Kizunacoin/linux32/',
         src: ['**/*'],
-        dest: 'byteball-linux32/'
+        dest: 'kizunacoin-linux32/'
       },
       linux64: {
         options: {
-          archive: '../byteballbuilds/byteball-linux64.zip'
+          archive: '../byteballbuilds/kizunacoin-linux64.zip'
         },
         expand: true,
         cwd: '../byteballbuilds/Kizunacoin/linux64/',
         src: ['**/*'],
-        dest: 'byteball-linux64/'
+        dest: 'kizunacoin-linux64/'
       }
     },
     browserify: {
