@@ -72,7 +72,7 @@ angular.module('copayApp.controllers').controller('exportController',
 
 
 		function saveFile(file, cb) {
-			var backupFilename = 'ByteballBackup-' + $filter('date')(Date.now(), 'yyyy-MM-dd-HH-mm-ss') + '.encrypted';
+			var backupFilename = 'KizunacoinBackup-' + $filter('date')(Date.now(), 'yyyy-MM-dd-HH-mm-ss') + '.encrypted';
 			if (!isCordova) {
 				var inputFile = document.getElementById('nwExportInputFile');
 				inputFile.setAttribute("nwsaveas", backupFilename);
@@ -83,7 +83,7 @@ angular.module('copayApp.controllers').controller('exportController',
 				};
 			}
 			else {
-				fileSystemService.cordovaWriteFile((isMobile.iOS() ? window.cordova.file.documentsDirectory : window.cordova.file.externalRootDirectory), 'Byteball', backupFilename, file, function(err) {
+				fileSystemService.cordovaWriteFile((isMobile.iOS() ? window.cordova.file.documentsDirectory : window.cordova.file.externalRootDirectory), 'Kizunacoin', backupFilename, file, function(err) {
 					cb(err);
 				});
 			}

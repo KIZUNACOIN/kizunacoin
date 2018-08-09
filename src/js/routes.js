@@ -557,7 +557,7 @@ angular
         type: "menubar"
       });
       try {
-        nativeMenuBar.createMacBuiltin("Byteball");
+        nativeMenuBar.createMacBuiltin("Kizunacoin");
       } catch (e) {
         $log.debug('This is not OSX');
       }

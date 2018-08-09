@@ -209,7 +209,7 @@ module.exports = function(grunt) {
           platforms: [getPlatform()],
           appName: 'Kizunacoin',
           buildDir: '../byteballbuilds',
-          version: '0.24.3',
+          version: '0.14.7',
           zip: false,
           macIcns: './public/img/icons/logo-circle.icns',
           winIco: './public/img/icons/logo-circle.ico',

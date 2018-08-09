@@ -1160,7 +1160,7 @@ angular.module('copayApp.controllers').controller('indexController', function($r
           $log.debug('Wallet Transaction History:', txs);
 
           var data = txs;
-          var filename = 'Byteball-' + (self.alias || self.walletName) + '.csv';
+          var filename = 'Kizunacoin-' + (self.alias || self.walletName) + '.csv';
           var csvContent = '';
 
           if (!isNode) csvContent = 'data:text/csv;charset=utf-8,';
@@ -1169,8 +1169,8 @@ angular.module('copayApp.controllers').controller('indexController', function($r
           var _amount, _note;
           var dataString;
           data.forEach(function(it, index) {
-            var amount = it.amount;
-
+            var amount = it.amount / 1e6;
+            console.log(it);
             if (it.action == 'moved')
               amount = 0;
 
@@ -1178,9 +1178,10 @@ angular.module('copayApp.controllers').controller('indexController', function($r
             _note = formatString((it.message ? it.message : '') + ' unit: ' + it.unit);
 
             if (it.action == 'moved')
-              _note += ' Moved:' + it.amount
+              _note += ' Moved:' + it.amount;
 
-            dataString = formatDate(it.time * 1000) + ',' + formatString(it.addressTo) + ',' + _note + ',' + _amount + ',byte,,,,';
+            dataString = formatDate(it.time * 1000) + ',' + formatString(it.addressTo) + ',' + _note + ',' + _amount + ',KIZ,,,,';
+            console.log(dataString);
             csvContent += dataString + "\n";
 
           });
