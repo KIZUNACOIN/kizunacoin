@@ -1625,7 +1625,7 @@ msgid "To bind the payment to a condition, please click the peer's address in ch
 msgstr ""
 
 #: public/views/walletHome.html:402
-msgid "To byteball address"
+msgid "To kizunacoin address"
 msgstr ""
 
 #: src/js/controllers/index.js:1433
@@ -2109,7 +2109,7 @@ msgid "{{hrd.destinationAddress}} can be spent if:"
 msgstr ""
 
 #: public/views/walletHome.html:394
-msgid "{{index.arrBalances[index.assetIndex].is_private ? 'To my other wallet' : 'To byteball address or email or username'}}"
+msgid "{{index.arrBalances[index.assetIndex].is_private ? 'To my other wallet' : 'To kizunacoin address or email or username'}}"
 msgstr ""
 
 #: public/views/copayers.html:26

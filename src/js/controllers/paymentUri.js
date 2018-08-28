@@ -6,7 +6,7 @@ angular.module('copayApp.controllers').controller('paymentUriController',
       return (parseFloat(number.toPrecision(12)));
     };
 
-    // Build bitcoinURI with querystring
+    // Build bitcoinURI with querystring     
     this.checkBitcoinUri = function() {
       var query = [];
       angular.forEach($location.search(), function(value, key) {

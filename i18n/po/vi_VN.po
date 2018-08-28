@@ -1630,12 +1630,12 @@ msgid "To bind the payment to a condition, please click the peer's address in ch
 msgstr "Liên kết thanh toán với một điều kiện, vui lòng nhấp vào địa chỉ ngang hàng trong trò chuyện"
 
 #: public/views/walletHome.html:402
-msgid "To byteball address"
-msgstr "Đến địa chỉ byteball"
+msgid "To kizunacoin address"
+msgstr "Đến địa chỉ kizunacoin"
 
 #: public/views/walletHome.html:394
-msgid "To byteball address or email"
-msgstr "Đến địa chỉ byteball hoặc email"
+msgid "To kizunacoin address or email"
+msgstr "Đến địa chỉ kizunacoin hoặc email"
 
 #: src/js/controllers/index.js:1434
 msgid "To email"

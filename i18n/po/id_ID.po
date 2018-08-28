@@ -1630,12 +1630,12 @@ msgid "To bind the payment to a condition, please click the peer's address in ch
 msgstr "Untuk mengikat pembayaran ke kondisi, klik alamat rekanan di obrolan"
 
 #: public/views/walletHome.html:402
-msgid "To byteball address"
-msgstr "Ke alamat byteball"
+msgid "To kizunacoin address"
+msgstr "Ke alamat kizunacoin"
 
 #: public/views/walletHome.html:394
-msgid "To byteball address or email"
-msgstr "Ke alamat byteball atau surel"
+msgid "To kizunacoin address or email"
+msgstr "Ke alamat kizunacoin atau surel"
 
 #: src/js/controllers/index.js:1434
 msgid "To email"

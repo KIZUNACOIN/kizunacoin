@@ -1630,11 +1630,11 @@ msgid "To bind the payment to a condition, please click the peer's address in ch
 msgstr "Ödemeye bir koşula bağlamak isterseniz, lütfen sohbette karşı tarafın adresine tıklayınız"
 
 #: public/views/walletHome.html:402
-msgid "To byteball address"
+msgid "To kizunacoin address"
 msgstr "Kizunacoin adresine"
 
 #: public/views/walletHome.html:394
-msgid "To byteball address or email"
+msgid "To kizunacoin address or email"
 msgstr "Kizunacoin adresine veya e-postaya"
 
 #: src/js/controllers/index.js:1434

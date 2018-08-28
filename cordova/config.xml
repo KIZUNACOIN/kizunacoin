@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.byteball.wallet"
-  version="2.3.0"
+<widget id="jp.kizunacoin.wallet"
+  version="2.4.1"
   android-versionCode="1068"
   ios-CFBundleVersion="2.3.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Kizunacoin</name>

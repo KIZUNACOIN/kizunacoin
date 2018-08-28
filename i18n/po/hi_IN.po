@@ -1630,11 +1630,11 @@ msgid "To bind the payment to a condition, please click the peer's address in ch
 msgstr "भुगतान को सशर्त करने के लिए, कृप्या बातचीत में सहकर्मी के पता में क्लिक करें"
 
 #: public/views/walletHome.html:402
-msgid "To byteball address"
+msgid "To kizunacoin address"
 msgstr "बाइटबॉल पता में"
 
 #: public/views/walletHome.html:394
-msgid "To byteball address or email"
+msgid "To kizunacoin address or email"
 msgstr "बाइटबॉल पता में या ईमेल में"
 
 #: src/js/controllers/index.js:1434

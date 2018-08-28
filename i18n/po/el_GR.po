@@ -1630,12 +1630,12 @@ msgid "To bind the payment to a condition, please click the peer's address in ch
 msgstr "Για να συνδέσετε την πληρωμή με μια συνθήκη, παρακαλώ κάντε κλικ στη διεύθυνση του ομότιμου στη συνομιλία"
 
 #: public/views/walletHome.html:402
-msgid "To byteball address"
-msgstr "Προς διεύθυνση byteball"
+msgid "To kizunacoin address"
+msgstr "Προς διεύθυνση kizunacoin"
 
 #: public/views/walletHome.html:394
-msgid "To byteball address or email"
-msgstr "Προς διεύθυνση byteball ή email"
+msgid "To kizunacoin address or email"
+msgstr "Προς διεύθυνση kizunacoin ή email"
 
 #: src/js/controllers/index.js:1434
 msgid "To email"

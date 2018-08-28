@@ -1630,12 +1630,12 @@ msgid "To bind the payment to a condition, please click the peer's address in ch
 msgstr "Abyste vytvořili podmíněnou platbu, klikněte na párovací adresu v chatu"
 
 #: public/views/walletHome.html:402
-msgid "To byteball address"
-msgstr "Na adresu byteball"
+msgid "To kizunacoin address"
+msgstr "Na adresu kizunacoin"
 
 #: public/views/walletHome.html:394
-msgid "To byteball address or email"
-msgstr "Na adresu byteball nebo e-mailu"
+msgid "To kizunacoin address or email"
+msgstr "Na adresu kizunacoin nebo e-mailu"
 
 #: src/js/controllers/index.js:1434
 msgid "To email"

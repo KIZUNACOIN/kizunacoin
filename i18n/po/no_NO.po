@@ -1422,11 +1422,11 @@ msgid "To bind the payment to a condition, please click the peer's address in ch
 msgstr ""
 
 #: public/views/walletHome.html:390
-msgid "To byteball address"
+msgid "To kizunacoin address"
 msgstr ""
 
 #: public/views/walletHome.html:382
-msgid "To byteball address or email"
+msgid "To kizunacoin address or email"
 msgstr ""
 
 #: public/views/modals/tx-details.html:44

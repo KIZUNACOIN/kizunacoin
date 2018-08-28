@@ -1629,12 +1629,12 @@ msgid "To bind the payment to a condition, please click the peer's address in ch
 msgstr "Upang ma-bind ang pagbabayad sa isang kondisyon, paki-click ang peer address sa chat"
 
 #: public/views/walletHome.html:402
-msgid "To byteball address"
-msgstr "Patungo sa byteball address"
+msgid "To kizunacoin address"
+msgstr "Patungo sa kizunacoin address"
 
 #: public/views/walletHome.html:394
-msgid "To byteball address or email"
-msgstr "Patungo sa byteball address o email"
+msgid "To kizunacoin address or email"
+msgstr "Patungo sa kizunacoin address o email"
 
 #: src/js/controllers/index.js:1434
 msgid "To email"
