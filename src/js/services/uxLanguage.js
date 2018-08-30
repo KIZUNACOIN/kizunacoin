@@ -62,7 +62,7 @@ angular.module('copayApp.services')
       isoCode: 'hi_IN',
     }, {
       name: '日本語',
-      isoCode: 'ja_jp',
+      isoCode: 'ja_JP',
       useIdeograms: true,
     }, {
       name: '中文',
