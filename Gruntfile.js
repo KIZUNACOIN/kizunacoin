@@ -179,8 +179,8 @@ module.exports = function(grunt) {
       linux: {
 		options: {timestamp: true, mode: true},
         files: [
-          {expand: true, cwd: './webkitbuilds/', src: ['byteball.desktop', '../public/img/icons/logo-circle.ico', '../public/img/icons/logo-circle-256.png'], dest: '../byteballbuilds/Kizunacoin/linux32/', flatten: true, filter: 'isFile', options: {timestamp: true, mode: true} },
-          {expand: true, cwd: './webkitbuilds/', src: ['byteball.desktop', '../public/img/icons/logo-circle.ico', '../public/img/icons/logo-circle-256.png'], dest: '../byteballbuilds/Kizunacoin/linux64/', flatten: true, filter: 'isFile', options: {timestamp: true, mode: true} },
+          {expand: true, cwd: './webkitbuilds/', src: ['kizunacoin.desktop', '../public/img/icons/logo-circle.ico', '../public/img/icons/logo-circle-256.png'], dest: '../byteballbuilds/Kizunacoin/linux32/', flatten: true, filter: 'isFile', options: {timestamp: true, mode: true} },
+          {expand: true, cwd: './webkitbuilds/', src: ['kizunacoin.desktop', '../public/img/icons/logo-circle.ico', '../public/img/icons/logo-circle-256.png'], dest: '../byteballbuilds/Kizunacoin/linux64/', flatten: true, filter: 'isFile', options: {timestamp: true, mode: true} },
         ],
       }
     },
@@ -238,21 +238,19 @@ module.exports = function(grunt) {
     compress: {
       linux32: {
         options: {
-          archive: '../byteballbuilds/kizunacoin-linux32.zip'
+          archive: '../byteballbuilds/Kizunacoin-linux32.zip'
         },
         expand: true,
         cwd: '../byteballbuilds/Kizunacoin/linux32/',
-        src: ['**/*'],
-        dest: 'kizunacoin-linux32/'
+        src: ['**/*']
       },
       linux64: {
         options: {
-          archive: '../byteballbuilds/kizunacoin-linux64.zip'
+          archive: '../byteballbuilds/Kizunacoin-linux64.zip'
         },
         expand: true,
         cwd: '../byteballbuilds/Kizunacoin/linux64/',
-        src: ['**/*'],
-        dest: 'kizunacoin-linux64/'
+        src: ['**/*']
       }
     },
     browserify: {
