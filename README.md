@@ -1,4 +1,4 @@
-Kizunacoin is a wallet for storage and transfer of decentralized value.  See [kizunacoin.jp](https://kizunacoin.jp/).
+Kizunacoin is a wallet for storage and transfer of decentralized value.  See [kizunacoin.net](https://www.kizunacoin.net/).
 
 ## Binary Downloads
 
@@ -123,7 +123,7 @@ This will download all partial and complete language translations while also cle
 
 * [GitHub Issues](https://github.com/KIZUNACOIN/kizunacoin/issues)
   * Open an issue if you are having problems with this project
-* [Email Support](mailto:kizunacoin@kizunacoin.jp)
+* [Email Support](mailto:admin@kizunacoin.net)
 
 ## Credits
 
