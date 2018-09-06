@@ -2,7 +2,7 @@ Kizunacoin is a wallet for storage and transfer of decentralized value.  See [ki
 
 ## Binary Downloads
 
-[Kizunacoin.jp](https://kizuncaoin.jp/)
+[Kizunacoin.net](https://www.kizuncaoin.net/)
 
 ## Main Features
 
