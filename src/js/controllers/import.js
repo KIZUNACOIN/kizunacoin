@@ -27,7 +27,7 @@ angular.module('copayApp.controllers').controller('importController',
 		self.oldAndroidFileName = '';
 		
 		function generateListFilesForIos() {
-			var backupDirPath = window.cordova.file.documentsDirectory + '/Byteball/';
+			var backupDirPath = window.cordova.file.documentsDirectory + '/Kizunacoin/';
 			fileSystemService.readdir(backupDirPath, function(err, listFilenames) {
 				if (listFilenames){
 					listFilenames.forEach(function(name) {

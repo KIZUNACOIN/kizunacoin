@@ -100,9 +100,9 @@ TBD
 
 Kizunacoin uses a single extended private key for all wallets, BIP44 is used for wallet address derivation.  There is a BIP39 mnemonic for backing up the wallet key, but it is not enough.  Private payments and co-signers of multisig wallets are stored only in the app's data directory, which you have to back up manually:
 
-* macOS: `~/Library/Application Support/byteball`
-* Linux: `~/.config/byteball`
-* Windows: `%LOCALAPPDATA%\byteball`
+* macOS: `~/Library/Application Support/kizunacoin`
+* Linux: `~/.config/kizunacoin`
+* Windows: `%LOCALAPPDATA%\kizunacoin`
 
 
 ## Translations
