@@ -6,18 +6,18 @@
         <a></a>
     </div>
 
-    <menu-toggle ng-show="index.menu.length > 5"></menu-toggle>
+    <menu-toggle ng-show="index.menu.length > 6"></menu-toggle>
 </div>
 
 <div class="bottom-bar row collapse" >
-    <div ng-class="{ 'columns': index.menu.length == 4 }">
+    <div ng-class="{ 'columns': index.menu.length == 5 }">
         <div class="row collapse">
             <div class="columns text-center bottombar-item"
-                 ng-repeat="item in index.menu | limitTo: (index.menu.length > 5 ? 4 : index.menu.length)">
+                 ng-repeat="item in index.menu | limitTo: (index.menu.length > 6 ? 5 : index.menu.length)">
               <span ng-include="'views/includes/menu-item.html'"></span>
             </div>
 
-            <menu-toggle ng-show="index.menu.length > 5"></menu-toggle>
+            <menu-toggle ng-show="index.menu.length > 6"></menu-toggle>
         </div>
     </div>
 </div>

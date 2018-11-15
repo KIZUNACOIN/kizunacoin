@@ -337,7 +337,7 @@ input.datafeed_input {
              translate> Send All
           </a>
 
-          
+          <available-balance></available-balance>
             <div class="size-10">
                 <span class="db text-bold">
                     <span translate>What to send</span>:
@@ -348,10 +348,11 @@ input.datafeed_input {
                 	<option ng-value="-2" translate>Attestation</option>
                 	<option ng-value="-3" translate>Profile</option>
                 	<option ng-value="-4" translate>Data</option>
+                	<option ng-value="-5" translate>Poll</option>
                 </select>
             </div>
         </h4>
-      </div> -->
+      </div>-->
       <div class="row m20t" ng-show="home.shownForm=='payment'">
         <div class="large-12 large-centered columns">
           <form name="sendPaymentForm" ng-submit="home.submitPayment()" ng-disabled="home.blockUx || home.onGoingProcess" novalidate>
@@ -422,24 +423,24 @@ input.datafeed_input {
 	                </span>
 	            </div>
 
-              <div class="input">
-                <input ng-if="!home.send_multiple" class="m0" type="text" id="address" name="address" ng-disabled="home.blockUx || home.lockAddress || index.arrBalances[index.assetIndex].is_private" ng-attr-placeholder="{{home.canSendExternalPayment() ? 'KIZUNACOIN address' : 'KIZUNACOIN address of your other wallet &#8594;'}}" ng-model="_address" ng-required valid-address-or-account ng-focus="home.formFocus('address')" ng-blur="home.formFocus(false)">
+	              <div class="input">
+	                <input ng-if="!home.send_multiple" class="m0" type="text" id="address" name="address" ng-disabled="home.blockUx || home.lockAddress || index.arrBalances[index.assetIndex].is_private" ng-attr-placeholder="{{(home.canSendExternalPayment() ? 'Kizunacoin address or email' : 'Kizunacoin address of your other wallet &#8594;')|translate}}" ng-model="_address" ng-required valid-address-or-account ng-focus="home.formFocus('address')" ng-blur="home.formFocus(false)">
                 <!--<input ng-if="!home.send_multiple && index.arrBalances[index.assetIndex].is_private" class="m0" type="text" id="address" name="address" ng-disabled="home.blockUx || home.lockAddress || !home.canSendExternalPayment()" ng-attr-placeholder="{{home.canSendExternalPayment() ? 'Kizunacoin address' : 'Kizunacoin address of your other wallet &#8594;'}}" ng-model="_address" ng-required valid-address ng-focus="home.formFocus('address')" ng-blur="home.formFocus(false)">-->
                 <textarea ng-if="home.send_multiple" class="m0" type="text" name="addresses" placeholder="Kizunacoin address, amount {{index.arrBalances[index.assetIndex].asset === 'base' ? 'in ' + home.unitName : 'of ' + (index.arrBalances[index.assetIndex].name || index.arrBalances[index.assetIndex].asset.substr(0,4) | limitTo:16)}}&#10;M7G2CZDBV7FWH2QMWUNXQ4MSLIZPHX3U, {{100000 / home.unitValue}}&#10;5OJ2RQ3AG7RLS6HFDAKOZGBZE6HKUWAZ, {{5000000 / home.unitValue}}&#10;not more than 120 rows" ng-model="_addresses" required valid-addresses="{{index.arrBalances[index.assetIndex].asset}}" style="margin-bottom: 25px" rows="4" msd-elastic="\n" ng-change="_amount=+(_addresses | sumNumbers).toLocaleString(['EN-US'], {maximumFractionDigits: index.arrBalances[index.assetIndex].decimals}).split(',').join('')"></textarea>
 
-                <!--<div class="addressbook-input" ng-show="!sendPaymentForm.address.$invalid && _address">
-                  {{index.addressbook[_address] || _address}}
-                </div>-->
-                <a class="postfix size-12 m0 text-gray" ng-hide="home.blockUx || home.lockAddress || home.send_multiple" ng-click="openDestinationAddressModal(index.otherWallets, _address)">
-                  <i class="icon-wallet size-18" style="margin-right: -3px;vertical-align: baseline;"></i>
-                </a>
-              </div>
-            <div ng-if="home.deviceAddressIsKnown()" style="font-size: 11px; font-weight: bold; margin-top: -1.5rem; margin-bottom: 1.5rem;">
-              <a ng-click="home.openBindModal()">
-                <span ng-if="!home.binding" translate>Bind the payment to a condition</span>
-                <span ng-if="home.binding" translate>This payment is bound to a condition</span>
-              </a>
-            </div>
+	                <!--<div class="addressbook-input" ng-show="!sendPaymentForm.address.$invalid && _address">
+	                  {{index.addressbook[_address] || _address}}
+	                </div>-->
+	                <a class="postfix size-12 m0 text-gray" ng-hide="home.blockUx || home.lockAddress || home.send_multiple" ng-click="openDestinationAddressModal(index.otherWallets, _address)">
+	                  <i class="icon-wallet size-18" style="margin-right: -3px;vertical-align: baseline;"></i>
+	                </a>
+	              </div>
+				  <div ng-if="home.deviceAddressIsKnown()" style="font-size: 11px; font-weight: bold; margin-top: -1.5rem; margin-bottom: 1.5rem;">
+					  <a ng-click="home.openBindModal()">
+						  <span ng-if="!home.binding" translate>Bind the payment to a condition</span>
+						  <span ng-if="home.binding" translate>This payment is bound to a condition</span>
+					  </a>
+				  </div>
 				  <!-- <div ng-if="!index.arrBalances[index.assetIndex].is_private && !home.blockUx && !home.lockAddress && home.canSendExternalPayment()" style="font-size: 11px; font-weight: bold; margin-top: -1.5rem; margin-bottom: 1.5rem; float: right;">
 					  <a ng-click="home.lockAmount = home.send_multiple = !home.send_multiple" class="text-gray" style="border-bottom: 1px dashed grey;">
 						  <span ng-if="home.send_multiple" translate>switch to single address</span>
@@ -447,11 +448,11 @@ input.datafeed_input {
 					  </a>
 				  </div> -->
 				  <div id="binding-drop" class="f-dropdown" data-dropdown-content style="padding: 10px;" translate>To bind the payment to a condition, please click the peer's address in chat</div>  
-				  <!-- <div ng-if="!home.deviceAddressIsKnown()" style="font-size: 11px; font-weight: bold; margin-top: -1.5rem; margin-bottom: 1.5rem">
+				  <div ng-if="!home.deviceAddressIsKnown()" style="font-size: 11px; font-weight: bold; margin-top: -1.5rem; margin-bottom: 1.5rem">
 					  <a dropdown-toggle="#binding-drop" data-options="align:top">
 						  <span translate class="text-gray">Bind the payment to a condition</span>
 					  </a>
-				  </div> -->
+				  </div>
 	            </div>
 
 	            <div class="row" ng-show="index.bHasMerkle">
@@ -540,6 +541,9 @@ input.datafeed_input {
 				<div class="row m20t text-gray size-12" ng-show="assetIndexSelectorValue == -4" translate>
 					Post arbitrary key-value pairs of data into Kizunacoin network.
 				</div>
+				<div class="row m20t text-gray size-12" ng-show="assetIndexSelectorValue == -5" translate>
+					Post a poll into Kizunacoin network that users can vote on with Poll bot.
+				</div>
 				<div class="row m20t" ng-if="assetIndexSelectorValue == -2">
 					<label style="float: left;">
 						<span translate>Address to attest</span>
@@ -555,20 +559,26 @@ input.datafeed_input {
                 </span>
 					<input type="text" name="address" ng-model="home.attested_address" placeholder="Kizunacoin address" valid-address ng-required="true">
 				</div>
+				<div class="row m20t" ng-if="assetIndexSelectorValue == -5">
+					<label style="float: left;">
+						<span translate>Question to be voted on</span>
+					</label>
+					<input type="text" name="poll_question" ng-model="home.poll_question" placeholder="Poll question" ng-required="true">
+				</div>
 				<div class="row m20t">
 					<label>
-						<span translate>Values</span>
+						<span>{{(assetIndexSelectorValue == -5 ? 'Options for answering' : 'Values')|translate}}</span>
 					</label>
 					<span ng-repeat="pair in home.feedvaluespairs">
-						<input type="text" ng-model="pair.name" placeholder="{{([-2, -3].includes(assetIndexSelectorValue) ? 'Profile field' : (assetIndexSelectorValue == -4 ? 'Field' : 'Datafeed name'))|translate}}" class="datafeed_input" ng-required="true" ng-maxlength="64" maxlength="64">
-						<input type="text" ng-model="pair.value" placeholder="{{([-2, -3].includes(assetIndexSelectorValue) ? 'Profile field value' : (assetIndexSelectorValue == -4 ? 'Value' : 'Datafeed value'))|translate}}" class="datafeed_input" ng-required="true" ng-maxlength="64" maxlength="64">
+						<input type="text" ng-model="pair.name" placeholder="{{([-2, -3].includes(assetIndexSelectorValue) ? 'Profile field' : ([-4, -5].includes(assetIndexSelectorValue) ? (assetIndexSelectorValue == -4 ? 'Field' : 'Answer') : 'Datafeed name'))|translate}}" class="datafeed_input" ng-required="true" ng-maxlength="64" maxlength="64" ng-style="(assetIndexSelectorValue == -5 ? {'width':'90%'} : {})">
+						<input ng-if="assetIndexSelectorValue != -5" type="text" ng-model="pair.value" placeholder="{{([-2, -3].includes(assetIndexSelectorValue) ? 'Profile field value' : (assetIndexSelectorValue == -4 ? 'Value' : 'Datafeed value'))|translate}}" class="datafeed_input" ng-required="true" ng-maxlength="64" maxlength="64">
 						<a ng-show="$last && !$first" ng-click="home.feedvaluespairs.splice(home.feedvaluespairs.length-1)"><i class="fi-minus size-18 m10r" style="vertical-align: middle;"></i></a>
 					</span>
-					<i data-trans="{{'Field' | translate}}" data-trans="{{'Profile field' | translate}}" data-trans="{{'Datafeed name' | translate}}" data-trans="{{'Profile field value' | translate}}" data-trans="{{'Value' | translate}}" data-trans="{{'Datafeed value' | translate}}" data-trans="{{'confirmed' | translate}}" data-trans="{{'available' | translate}}" ></i>
+					<i data-trans="{{'Add answer' | translate}}" data-trans="{{'Add fields' | translate}}" data-trans="{{'Options for answering' | translate}}" data-trans="{{'Values' | translate}}" data-trans="{{'Answer' | translate}}" data-trans="{{'Field' | translate}}" data-trans="{{'Profile field' | translate}}" data-trans="{{'Datafeed name' | translate}}" data-trans="{{'Profile field value' | translate}}" data-trans="{{'Value' | translate}}" data-trans="{{'Datafeed value' | translate}}" data-trans="{{'confirmed' | translate}}" data-trans="{{'available' | translate}}" ></i>
 					<div class="clear"></div>
 					<a ng-click="home.feedvaluespairs.push({})" style="padding:10px 0;" ng-show="home.feedvaluespairs.length < 20">
 						<i class="fi-plus size-18 m10r" style="vertical-align: middle;"></i> 
-						<span class="text-close size-12" translate>Add fields</span> 
+						<span class="text-close size-12">{{(assetIndexSelectorValue == -5 ? 'Add answer' : 'Add fields')|translate}}</span> 
 					</a>
 				</div>
 
