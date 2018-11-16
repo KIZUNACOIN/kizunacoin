@@ -122,8 +122,10 @@ input.datafeed_input {
               <br><span translate>Tap to retry</span>
             </div>
 
-            <ul rn-carousel rn-carousel-transition="hexagon" rn-carousel-index="index.assetIndex" rn-carousel-controls>
-                <li ng-click='index.onClick()' ng-show="!index.updateError && index.walletScanStatus != 'error'" ng-repeat="balance in index.arrBalances">
+                        <ul rn-carousel rn-carousel-transition="hexagon" rn-carousel-index="index.assetIndex">
+                            <li ng-click='index.onClick()'
+                                ng-show="!index.updateError && index.walletScanStatus != 'error' && $first"
+                                ng-repeat="balance in index.arrBalances">
 					<div ng-click='index.updateAll(); index.updateHistoryFromNetwork()'>
 						<strong class="size-36" ng-if="balance.totalStr && balance.totalStr.length <= 16">{{balance.totalStr}}</strong>
 						<div ng-if="balance.totalStr && balance.totalStr.length > 16">
@@ -170,7 +172,8 @@ input.datafeed_input {
                     </div>
                 </li>
             </ul>
-            <div rn-carousel-indicators ng-if="index.arrBalances.length > 1" slides="index.arrBalances" rn-carousel-index="index.assetIndex"></div>
+                        <div rn-carousel-indicators ng-if="index.arrBalances.length > 2" slides="index.arrBalances"
+                             rn-carousel-index="index.assetIndex"></div>
           </div>
 
           <div ng-if="index.anyOnGoingProcess && 0">
@@ -448,7 +451,7 @@ input.datafeed_input {
 					  </a>
 				  </div> -->
 				  <div id="binding-drop" class="f-dropdown" data-dropdown-content style="padding: 10px;" translate>To bind the payment to a condition, please click the peer's address in chat</div>  
-				  <div ng-if="!home.deviceAddressIsKnown()" style="font-size: 11px; font-weight: bold; margin-top: -1.5rem; margin-bottom: 1.5rem">
+				   <div ng-if="!home.deviceAddressIsKnown()" style="font-size: 11px; font-weight: bold; margin-top: -1.5rem; margin-bottom: 1.5rem">
 					  <a dropdown-toggle="#binding-drop" data-options="align:top">
 						  <span translate class="text-gray">Bind the payment to a condition</span>
 					  </a>
@@ -619,11 +622,11 @@ input.datafeed_input {
 
     -->
     <div id="history" class="history tab-view">
-      <div ng-show="index.arrBalances.length > 1">
+      <!-- <div ng-show="index.arrBalances.length > 1">
         <h4 class="title m0" style="padding:0 10px;">
             <select class="m10t" ng-model="index.assetIndex" ng-options="index.arrBalances.indexOf(balance) as (balance.totalStr ? balance.totalStr : balance.total.toLocaleString() + ' of ' + balance.asset) for balance in index.arrBalances" ng-disabled="home.blockUx || home.lockAsset" ng-change="index.updateHistory()"></select>
         </h4>
-      </div>
+      </div> -->
       <div class="row m20t" ng-show="!index.txHistory[0] && !index.updatingTxHistory[index.walletId]">
         <div class="large-12 columns">
           <div class="oh text-center">

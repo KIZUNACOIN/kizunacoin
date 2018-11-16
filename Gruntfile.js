@@ -39,6 +39,7 @@ module.exports = function(grunt) {
       },
       main: {
         files: [
+          'src/js/polyfills.js',
           'src/js/init.js',
           'src/js/app.js',
           'src/js/directives/*.js',
@@ -79,6 +80,7 @@ module.exports = function(grunt) {
       },
       js: {
         src: [
+          'src/js/polyfills.js',
           'angular-bitcore-wallet-client/index.js',
           'src/js/app.js',
           'src/js/routes.js',
@@ -242,7 +244,8 @@ module.exports = function(grunt) {
         },
         expand: true,
         cwd: '../byteballbuilds/Kizunacoin/linux32/',
-        src: ['**/*']
+        src: ['**/*'],
+        dest: 'kizunacoin-linux32/'
       },
       linux64: {
         options: {
@@ -250,7 +253,8 @@ module.exports = function(grunt) {
         },
         expand: true,
         cwd: '../byteballbuilds/Kizunacoin/linux64/',
-        src: ['**/*']
+        src: ['**/*'],
+        dest: 'kizunacoin-linux64/'
       }
     },
     browserify: {
@@ -279,7 +283,7 @@ module.exports = function(grunt) {
             options: {
                 maintainer: {
                     name: 'Kizunacoin',
-                    email: 'kizunacoin@kizunacoin.jp'
+                    email: 'admin@kizunacoin.net'
                 },
                 long_description: 'Smart payments made simple',
                 target_architecture: 'amd64'
