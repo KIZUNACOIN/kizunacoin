@@ -3,7 +3,7 @@
 
 #define MyAppName "KIZUNACOIN"
 #define MyAppPackageName "Kizunacoin"
-#define MyAppVersion "2.4.1"
+#define MyAppVersion "2.6.0"
 #define MyAppPublisher "Kizunacoin"
 #define MyAppURL "https://www.kizunacoin.net"
 #define MyAppExeName "Kizunacoin.exe"
@@ -52,7 +52,7 @@ Root: HKCR; Subkey: "{#MyAppName}Coin\shell\open\command";  ValueData: "{app}\{#
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-; Source: "..\byteballbuilds\byteball-test\win64\byteball.exe"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "..\byteballbuilds\byteball-test\win64\Kizunacoin.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\byteballbuilds\{#MyAppPackageName}\win64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "../public/img/icons/logo-circle.ico"; DestDir: "{app}"; DestName: "icon.ico"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
