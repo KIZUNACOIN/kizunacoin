@@ -20,10 +20,11 @@ angular.module('copayApp.controllers').controller('indexController', function($r
   self.historyShowLimit = 10;
   self.updatingTxHistory = {};
   self.bSwipeSuspended = false;
+  self.assetsSet = {};
   self.arrBalances = [];
   self.assetIndex = 0;
   self.$state = $state;
-  self.usePushNotifications = isCordova && !isMobile.Windows() &&  isMobile.Android();
+  self.usePushNotifications = isCordova && !isMobile.Windows();
     /*
     console.log("process", process.env);
     var os = require('os');
@@ -307,7 +308,7 @@ angular.module('copayApp.controllers').controller('indexController', function($r
             // my own address is not included in arrCorrespondentInfos because I'm not my correspondent
             var arrNames = arrCorrespondentInfos.map(function(correspondent){ return correspondent.name; });
             var name_list = arrNames.join(", ");
-            var question = gettextCatalog.getString('Create new wallet '+walletName+' together with '+name_list+' ?');
+            var question = gettextCatalog.getString('Create new wallet') + ' ' + walletName + ' ' + gettextCatalog.getString('together with') + ' ' + name_list + ' ?';
             requestApproval(question, {
                 ifYes: function(){
                     console.log("===== YES CLICKED")
@@ -404,7 +405,7 @@ angular.module('copayApp.controllers').controller('indexController', function($r
             }
 			
 			if (objUnit.signed_message){
-				var question = gettextCatalog.getString('Sign message "'+objUnit.signed_message+'" by address '+objAddress.address+'?');
+				var question = gettextCatalog.getString('Sign message') + ' ' + objUnit.signed_message + ' ' + gettextCatalog.getString('by address') + ' ' + objAddress.address+'?';
 				requestApproval(question, {
 					ifYes: function(){
 						createAndSendSignature();
@@ -676,14 +677,12 @@ angular.module('copayApp.controllers').controller('indexController', function($r
     'title': gettext('History'),
     'icon': 'icon-history',
     'link': 'history'
-  }
-  // , {
-  //   'title': gettext('Chat'),
-  //   'icon': 'icon-bubble',
-  //   'new_state': 'correspondentDevices',
-  //   'link': 'chat'
-  // }
-];
+  }, {
+    'title': gettext('Chat'),
+    'icon': 'icon-bubble',
+    'new_state': 'correspondentDevices',
+    'link': 'chat'
+  }];
 
   self.addonViews = addonManager.addonViews();
   self.menu = self.menu.concat(addonManager.addonMenuItems());
@@ -728,6 +727,7 @@ angular.module('copayApp.controllers').controller('indexController', function($r
     self.availableBalanceStr = null;
     self.lockedBalanceStr = null;
 
+    self.assetsSet = {};
     self.arrBalances = [];
     self.assetIndex = 0;
 	self.shared_address = null;
@@ -1004,54 +1004,79 @@ angular.module('copayApp.controllers').controller('indexController', function($r
     var fc = profileService.focusedClient;
     fc.isSingleAddress = self.isSingleAddress;
   };
+
+  self.getCurrentWalletHiddenAssets = function () {
+    var hiddenAssets = configService.getSync().hiddenAssets;
+    var fc = profileService.focusedClient;
+    var walletId = fc.credentials.walletId;
+    if (hiddenAssets.hasOwnProperty(walletId)) {
+      return hiddenAssets[walletId];
+    } else {
+      return {};
+    }
+  };
+
+  self.isAssetHidden = function (asset, assetsSet) {
+    if (!assetsSet) {
+      assetsSet = self.getCurrentWalletHiddenAssets();
+    }
+    return assetsSet[asset];
+  };
 	
   self.setBalance = function(assocBalances, assocSharedBalances) {
     if (!assocBalances) return;
     var config = configService.getSync().wallet.settings;
+    var fc = profileService.focusedClient;
+    var hiddenAssets = self.getCurrentWalletHiddenAssets();
+    console.log('setBalance hiddenAssets:', hiddenAssets);
 
     // Selected unit
     self.unitValue = config.unitValue;
     self.unitName = config.unitName;
     self.bbUnitName = config.bbUnitName;
-	
+  
+    self.assetsSet = {};
     self.arrBalances = [];
     for (var asset in assocBalances){
-      var balanceInfo = assocBalances[asset];
-      balanceInfo.asset = asset;
-      balanceInfo.total = balanceInfo.stable + balanceInfo.pending;
-      if (assocSharedBalances[asset]){
-        balanceInfo.shared = 0;
-        balanceInfo.assocSharedByAddress = {};
-        for (var sa in assocSharedBalances[asset]){
-          var total_on_shared_address = (assocSharedBalances[asset][sa].stable || 0) + (assocSharedBalances[asset][sa].pending || 0);
-          balanceInfo.shared += total_on_shared_address;
-          balanceInfo.assocSharedByAddress[sa] = total_on_shared_address;
-        }
-      }
-      if (balanceInfo.name)
+        var balanceInfo = assocBalances[asset];
+        balanceInfo.asset = asset;
+        balanceInfo.total = balanceInfo.stable + balanceInfo.pending;
+		if (assocSharedBalances[asset]){
+			balanceInfo.shared = 0;
+			balanceInfo.assocSharedByAddress = {};
+			for (var sa in assocSharedBalances[asset]){
+				var total_on_shared_address = (assocSharedBalances[asset][sa].stable || 0) + (assocSharedBalances[asset][sa].pending || 0);
+				balanceInfo.shared += total_on_shared_address;
+				balanceInfo.assocSharedByAddress[sa] = total_on_shared_address;
+			}
+		}
+		if (balanceInfo.name)
 			profileService.assetMetadata[asset] = {decimals: balanceInfo.decimals, name: balanceInfo.name};
-      if (asset === "base" || asset == self.BLACKBYTES_ASSET || balanceInfo.name){
-        balanceInfo.totalStr = profileService.formatAmountWithUnit(balanceInfo.total, asset);
-        balanceInfo.totalStrWithoutUnit = profileService.formatAmount(balanceInfo.total, asset);
-        balanceInfo.stableStr = profileService.formatAmountWithUnit(balanceInfo.stable, asset);
-        balanceInfo.pendingStr = profileService.formatAmountWithUnitIfShort(balanceInfo.pending, asset);
-        if (typeof balanceInfo.shared === 'number')
-          balanceInfo.sharedStr = profileService.formatAmountWithUnitIfShort(balanceInfo.shared, asset);
-        if (!balanceInfo.name){
-          if (!Math.log10) // android 4.4
-            Math.log10 = function(x) { return Math.log(x) * Math.LOG10E; };
-          if (asset === "base"){
-            balanceInfo.name = self.unitName;
-            balanceInfo.decimals = Math.round(Math.log10(config.unitValue));
-          }
-          else if (asset === self.BLACKBYTES_ASSET){
-            balanceInfo.name = self.bbUnitName;
-            balanceInfo.decimals = Math.round(Math.log10(config.bbUnitValue));
-          }
+        if (asset === "base" || asset == self.BLACKBYTES_ASSET || balanceInfo.name){
+			balanceInfo.totalStr = profileService.formatAmountWithUnit(balanceInfo.total, asset);
+			balanceInfo.totalStrWithoutUnit = profileService.formatAmount(balanceInfo.total, asset);
+			balanceInfo.stableStr = profileService.formatAmountWithUnit(balanceInfo.stable, asset);
+			balanceInfo.pendingStr = profileService.formatAmountWithUnitIfShort(balanceInfo.pending, asset);
+			if (typeof balanceInfo.shared === 'number')
+				balanceInfo.sharedStr = profileService.formatAmountWithUnitIfShort(balanceInfo.shared, asset);
+			if (!balanceInfo.name){
+				if (!Math.log10) // android 4.4
+					Math.log10 = function(x) { return Math.log(x) * Math.LOG10E; };
+				if (asset === "base"){
+					balanceInfo.name = self.unitName;
+					balanceInfo.decimals = Math.round(Math.log10(config.unitValue));
+				}
+				else if (asset === self.BLACKBYTES_ASSET){
+					balanceInfo.name = self.bbUnitName;
+					balanceInfo.decimals = Math.round(Math.log10(config.bbUnitValue));
+				}
+			}
         }
-      }
-      self.arrBalances.push(balanceInfo);
-      break;
+        self.assetsSet[asset] = balanceInfo;
+        if (self.isAssetHidden(asset, hiddenAssets)) {
+          continue;
+        }
+        self.arrBalances.push(balanceInfo);
     }
     self.assetIndex = self.assetIndex || 0;
 	if (!self.arrBalances[self.assetIndex]) // if no such index in the subwallet, reset to bytes
@@ -1170,7 +1195,7 @@ angular.module('copayApp.controllers').controller('indexController', function($r
           var dataString;
           data.forEach(function(it, index) {
             var amount = it.amount / 1e6;
-            console.log(it);
+
             if (it.action == 'moved')
               amount = 0;
 
@@ -1178,10 +1203,9 @@ angular.module('copayApp.controllers').controller('indexController', function($r
             _note = formatString((it.message ? it.message : '') + ' unit: ' + it.unit);
 
             if (it.action == 'moved')
-              _note += ' Moved:' + it.amount;
+              _note += ' Moved:' + it.amount
 
             dataString = formatDate(it.time * 1000) + ',' + formatString(it.addressTo) + ',' + _note + ',' + _amount + ',KIZ,,,,';
-            console.log(dataString);
             csvContent += dataString + "\n";
 
           });
