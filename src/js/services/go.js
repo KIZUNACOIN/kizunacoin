@@ -194,7 +194,29 @@ angular.module('copayApp.services').factory('go', function($window, $rootScope, 
 		var conf = require('core/conf.js');
 		var url = new RegExp('^'+conf.program+':', 'i');
 		var file = new RegExp("\\."+configService.privateTextcoinExt+'$', 'i');
-		var arrParts = commandLine.split(' '); // on windows includes exe and all args, on mac just our arg
+		var tokenize = function(str) {
+			var tokens = [];
+			var start = -1; // opening quote index
+			var lastSpace = -1;
+			for (var i = 0; i < str.length; i++) {
+				if (str[i] == '"' || str[i] == '\'')
+					if (start != -1) {
+						tokens.push(str.substring(start+1, i));
+						start = -1;
+					} else
+						start = i;
+				if (str[i] == ' ' && start == -1) {
+					if (str.substring(lastSpace+1, i).length)
+						tokens.push(str.substring(lastSpace+1, i));
+					lastSpace = i;
+				}
+			}
+			if (lastSpace != -1 && str.substring(lastSpace+1, i).length) {
+				tokens.push(str.substring(lastSpace+1, i));
+			}
+			return (tokens.length > 0) ? tokens : [str];
+		}
+		var arrParts = tokenize(commandLine); // on windows commandLine includes exe and all args, on mac just our arg
 		for (var i=0; i<arrParts.length; i++){
 			var part = arrParts[i].trim().replace(/"/g, '');
 			if (part.match(url) || part.match(file))
@@ -212,21 +234,21 @@ angular.module('copayApp.services').factory('go', function($window, $rootScope, 
 		var fs = require('fs'+'');
 		var path = require('path'+'');
 		var child_process = require('child_process'+'');
-		var package = require('../package.json'+''); // relative to html root
+		var package_json = require('../package.json'+''); // relative to html root
 		var applicationsDir = process.env.HOME + '/.local/share/applications';
 		var mimeDir = process.env.HOME + '/.local/share/mime';
 		fileSystemService.recursiveMkdir(applicationsDir, parseInt('700', 8), function(err){
 			console.log('mkdir applications: '+err);
-			fs.writeFile(applicationsDir + '/' +package.name+'.desktop', "[Desktop Entry]\n\
+			fs.writeFile(applicationsDir + '/' +package_json.name+'.desktop', "[Desktop Entry]\n\
 Type=Application\n\
 Version=1.0\n\
-Name="+package.name+"\n\
-Comment="+package.description+"\n\
+Name="+package_json.name+"\n\
+Comment="+package_json.description+"\n\
 Exec="+process.execPath.replace(/ /g, '\\ ')+" %u\n\
 Icon="+path.dirname(process.execPath)+"/public/img/icons/logo-circle-256.png\n\
 Terminal=false\n\
 Categories=Office;Finance;\n\
-MimeType=x-scheme-handler/"+package.name+";application/x-"+package.name+";\n\
+MimeType=x-scheme-handler/"+package_json.name+";application/x-"+package_json.name+";\n\
 X-Ubuntu-Touch=true\n\
 X-Ubuntu-StageHint=SideStage\n", {mode: 0755}, function(err){
 				if (err)
@@ -235,9 +257,9 @@ X-Ubuntu-StageHint=SideStage\n", {mode: 0755}, function(err){
 					if (err)
 						throw Error("failed to exec update-desktop-database: "+err);
 					var writeXml = function() {
-						fs.writeFile(mimeDir + '/packages/' + package.name+'.xml', "<?xml version=\"1.0\"?>\n\
+						fs.writeFile(mimeDir + '/packages/' + package_json.name+'.xml', "<?xml version=\"1.0\"?>\n\
 	 <mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>\n\
-	   <mime-type type=\"application/x-"+package.name+"\">\n\
+	   <mime-type type=\"application/x-"+package_json.name+"\">\n\
 	   <comment>Byteball Private Coin</comment>\n\
 	   <glob pattern=\"*."+configService.privateTextcoinExt+"\"/>\n\
 	  </mime-type>\n\
@@ -247,7 +269,7 @@ X-Ubuntu-StageHint=SideStage\n", {mode: 0755}, function(err){
 							child_process.exec('update-mime-database '+mimeDir, function(err){
 								if (err)
 									throw Error("failed to exec update-mime-database: "+err);
-								child_process.exec('xdg-icon-resource install --context mimetypes --size 64 '+path.dirname(process.execPath)+'/public/img/icons/logo-circle-64.png application-x-'+package.name, function(err){});
+								child_process.exec('xdg-icon-resource install --context mimetypes --size 64 '+path.dirname(process.execPath)+'/public/img/icons/logo-circle-64.png application-x-'+package_json.name, function(err){});
 							});
 	 						console.log(".desktop done");
 	 					});
@@ -362,8 +384,10 @@ X-Ubuntu-StageHint=SideStage\n", {mode: 0755}, function(err){
 });
 
 function tempHandleUri(url){
-	console.log("saving open url "+url);
-	window.open_url = url;
+	setTimeout(function(){
+		console.log("saving open url "+url);
+		window.open_url = url;
+	},0);
 }
 
 

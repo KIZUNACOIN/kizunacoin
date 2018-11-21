@@ -48,6 +48,8 @@ Then run Kizunacoin desktop client:
 /path/to/your/nwjs/nwjs .
 ```
 
+If you have run `grunt desktop` then there is 0.14.7 NW.js also installed in cache folder.
+
 ## Build Kizunacoin App Bundles
 
 All app bundles will be placed at `../byteballbuilds` dir, so create it first: `mkdir -p ../byteballbuilds`

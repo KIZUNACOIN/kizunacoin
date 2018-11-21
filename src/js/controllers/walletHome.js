@@ -193,6 +193,9 @@ angular.module('copayApp.controllers')
 							return;
 						}
 						$scope.list = ab;
+						$timeout(function() {
+							$scope.$digest();
+						});
 					});
 				};
 
@@ -401,7 +404,7 @@ angular.module('copayApp.controllers')
 				if (isMobile.Android() || isMobile.Windows()) {
 					window.ignoreMobilePause = true;
 				}
-				window.plugins.socialsharing.share(self.protocol + ':' + addr, null, null, null);
+				window.plugins.socialsharing.shareWithOptions({message: "My Kizunacoin address " + self.protocol +  ':' + addr, subject: "My Kizunacoin address"/*, url: self.protocol +  ':' + addr*/}, function(){}, function(){});
 			}
 		};
 
@@ -613,8 +616,11 @@ angular.module('copayApp.controllers')
 						event.preventDefault();
 					}
 					catch (e) {};
-					angular.element(e)
-						.triggerHandler('click');
+					$timeout(function(){
+						try {
+							angular.element(e).triggerHandler('click');
+						} catch (e) {};
+					});
 				}, true);
 			});
 		}
@@ -869,6 +875,9 @@ angular.module('copayApp.controllers')
 			var asset = assetInfo.asset;
 			console.log("asset " + asset);
 
+			if (conf.bLight && indexScope.copayers.length > 1 && indexScope.onGoingProcess['Syncing']) //wait for sync before sending
+					return self.setSendError(gettext("wait for sync to complete before sending payments"));
+
 			if (isMultipleSend) {
 				if (assetInfo.is_private)
 					return self.setSendError("private assets can not be sent to multiple addresses");
@@ -903,9 +912,7 @@ angular.module('copayApp.controllers')
 					amount *= bbUnitValue;
 				else if (assetInfo.decimals)
 					amount *= Math.pow(10, assetInfo.decimals);
-				amount = Math.round(amount);				
-				console.log("**********  unit value : " + unitValue);
-				console.log("**********  amount : " + amount);
+				amount = Math.round(amount);
 
 				var current_payment_key = '' + asset + address + amount;
 			}
@@ -920,6 +927,70 @@ angular.module('copayApp.controllers')
 			indexScope.setOngoingProcess(gettext('sending'), true);
 			$timeout(function() {
 
+				if (!isMultipleSend && accountValidationResult.isValid) { // try to replace validation result with attested BB address
+					var attestorKey = accountValidationResult.attestorKey;
+					var account = accountValidationResult.account;
+					var bb_address = aliasValidationService.getBbAddress(
+						attestorKey,
+						account
+					);
+					console.log('attestorKey='+attestorKey+' : account='+account+' : bb_address='+bb_address);
+
+					if (!bb_address) {
+						return aliasValidationService.resolveValueToBbAddress(
+							attestorKey,
+							account,
+							function () {
+								// assocBbAddresses in aliasValidationService is now filled
+								delete self.current_payment_key;
+								self.submitPayment();
+							}
+						);
+					}
+
+					if (!isEmail) {
+
+						if (bb_address === 'unknown' || bb_address === 'none') {
+							if (bb_address === 'unknown') {
+								aliasValidationService.deleteAssocBbAddress(
+									attestorKey,
+									account
+								);
+							}
+
+							delete self.current_payment_key;
+							indexScope.setOngoingProcess(gettext('sending'), false);
+							return self.setSendError('Attested account not found');
+						} else if (ValidationUtils.isValidAddress(bb_address)) {
+							original_address = address;
+							address = bb_address;
+							isEmail = false;
+							isTextcoin = false;
+						} else {
+							throw Error("unrecognized bb_address: "+bb_address);
+						}
+
+					} else {
+
+						if (bb_address === 'unknown') {
+							aliasValidationService.deleteAssocBbAddress(
+								attestorKey,
+								account
+							); // send textcoin now but retry next time
+						} else if (bb_address === 'none') {
+							// go on to send textcoin
+						} else if (ValidationUtils.isValidAddress(bb_address)) {
+							original_address = account;
+							address = bb_address;
+							isEmail = false;
+							isTextcoin = false;
+						} else {
+							throw Error("unrecognized bb_address: "+bb_address);
+						}
+
+					}
+				}
+
 				profileService.requestTouchid(function(err) {
 					if (err) {
 						profileService.lockFC();
@@ -932,70 +1003,6 @@ angular.module('copayApp.controllers')
 						return;
 					}
 					
-					if (!isMultipleSend && accountValidationResult.isValid) { // try to replace validation result with attested BB address
-						var attestorKey = accountValidationResult.attestorKey;
-						var account = accountValidationResult.account;
-						var bb_address = aliasValidationService.getBbAddress(
-							attestorKey,
-							account
-						);
-						console.log('attestorKey='+attestorKey+' : account='+account+' : bb_address='+bb_address);
-						
-						if (!bb_address) {
-							return aliasValidationService.resolveValueToBbAddress(
-								attestorKey,
-								account,
-								function () {
-									// assocBbAddresses in aliasValidationService is now filled
-									delete self.current_payment_key;
-									self.submitPayment();
-								}
-							);
-						}
-
-						if (!isEmail) {
-
-							if (bb_address === 'unknown' || bb_address === 'none') {
-								if (bb_address === 'unknown') {
-									aliasValidationService.deleteAssocBbAddress(
-										attestorKey,
-										account
-									);
-								}
-
-								delete self.current_payment_key;
-								indexScope.setOngoingProcess(gettext('sending'), false);
-								return self.setSendError('Attested account not found');
-							} else if (ValidationUtils.isValidAddress(bb_address)) {
-								original_address = address;
-								address = bb_address;
-								isEmail = false;
-								isTextcoin = false;
-							} else {
-								throw Error("unrecognized bb_address: "+bb_address);
-							}
-
-						} else {
-
-							if (bb_address === 'unknown') {
-								aliasValidationService.deleteAssocBbAddress(
-									attestorKey,
-									account
-								); // send textcoin now but retry next time
-							} else if (bb_address === 'none') {
-								// go on to send textcoin
-							} else if (ValidationUtils.isValidAddress(bb_address)) {
-								original_address = account;
-								address = bb_address;
-								isEmail = false;
-								isTextcoin = false;
-							} else {
-								throw Error("unrecognized bb_address: "+bb_address);
-							}
-
-						}
-					}
-
 					var device = require('core/device.js');
 					if (self.binding) {
 						if (isTextcoin) {
@@ -1173,7 +1180,7 @@ angular.module('copayApp.controllers')
 							}
 							var binding = self.binding;
 							self.resetForm();
-							$rootScope.$emit("NewOutgoingTx");
+						//	$rootScope.$emit("NewOutgoingTx"); // we are already updating UI in response to new_my_transactions event which is triggered by broadcast
 							if (original_address){
 								var db = require('core/db.js');
 								db.query("INSERT INTO original_addresses (unit, address, original_address) VALUES(?,?,?)", 
@@ -1262,6 +1269,9 @@ angular.module('copayApp.controllers')
 				case -4:
 					app = "data";
 					break;
+				case -5:
+					app = "poll";
+					break;
 				default:
 					throw new Error("invalid asset selected");
 					break;
@@ -1306,6 +1316,12 @@ angular.module('copayApp.controllers')
 					value = {
 						address: $scope.home.attested_address,
 						profile: value
+					};
+				}
+				if (app == "poll") {
+					value = {
+						question: $scope.home.poll_question,
+						choices: Object.keys(value)
 					};
 				}
 				var objMessage = {
@@ -1506,16 +1522,14 @@ angular.module('copayApp.controllers')
 					//	form.amount.$setViewValue("" + amount);
 					//	form.amount.$isValid = true;
 					this.lockAmount = true;
-					$timeout(function() {
-						form.amount.$setViewValue("" + profileService.getAmountInDisplayUnits(amount, asset));
-						form.amount.$isValid = true;
-						form.amount.$render();
-					});
+					form.amount.$setViewValue("" + profileService.getAmountInDisplayUnits(amount, asset));
+					form.amount.$isValid = true;
+					form.amount.$render();
 				}
-				else {
+				else  {
 					this.lockAmount = false;
+					form.amount.$setViewValue("");
 					form.amount.$pristine = true;
-					form.amount.$setViewValue('');
 					form.amount.$render();
 				}
 				//	form.amount.$render();
@@ -1564,10 +1578,12 @@ angular.module('copayApp.controllers')
 
 			$timeout(function() {
 				if (form && form.amount) {
+					if (!$scope.$root) $scope.$root = {};
 					form.amount.$pristine = true;
-					form.amount.$setViewValue('');
-					if (form.amount)
+					if (form.amount) {
+						form.amount.$setViewValue('');
 						form.amount.$render();
+					}
 
 					if (form.merkle_proof) {
 						form.merkle_proof.$setViewValue('');
@@ -1688,6 +1704,15 @@ angular.module('copayApp.controllers')
 			}
 		};
 
+		this.openInExplorer = function(unit) {
+			var testnet = home.isTestnet ? 'testnet' : '';
+			var url = 'https://' + testnet + 'explorer.kizunacoin.jp/#' + unit;
+			if (typeof nw !== 'undefined')
+				nw.Shell.openExternal(url);
+			else if (isCordova)
+				cordova.InAppBrowser.open(url, '_system');
+		};
+
 		this.openTxModal = function(btx) {
 			$rootScope.modalOpened = true;
 			var self = this;
@@ -1770,12 +1795,7 @@ angular.module('copayApp.controllers')
 				};
 
 				$scope.openInExplorer = function() {
-					var testnet = home.isTestnet ? 'testnet' : '';
-					var url = 'https://' + testnet + 'explorer.kizunacoin.jp/#' + btx.unit;
-					if (typeof nw !== 'undefined')
-						nw.Shell.openExternal(url);
-					else if (isCordova)
-						cordova.InAppBrowser.open(url, '_system');
+					return self.openInExplorer(btx.unit);
 				};
 
 				$scope.copyAddress = function(addr) {

@@ -140,7 +140,6 @@ angular.module('copayApp.services')
 
     root.storeConfig = function(val, cb) {
       $log.debug('Storing Preferences', val);
-      
       storage.set('config', val, cb);
     };
 
