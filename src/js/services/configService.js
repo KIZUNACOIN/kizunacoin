@@ -24,27 +24,42 @@ angular.module('copayApp.services').factory('configService', function(storageSer
 
   root.oracles = {
 		"FOPUBEUPBC6YLIQDLKL6EW775BMV7YOH": {
-			name: "Bitcoin Oracle",
+			name: "Bitcoin oracle",
+			feedname_placeholder: "bitcoin_merkle or randomXXXXXX",
+			feedvalue_placeholder: "e.g. 1LR5xew1X13okNYKRu7qA3uN4hpRH1Tfnn:0.5",
+			instructions_url: "https://medium.com/byteball/making-p2p-great-again-episode-ii-bitcoin-exchange-d98adfbde2a5",
 			feednames_filter: ["^bitcoin_merkle$", "^random[\\d]+$"],
 			feedvalues_filter: ["^[13][a-km-zA-HJ-NP-Z1-9]{25,34}\\:[0-9\\.]+$", "^\\d{1,6}$"]
 		},
 		"JPQKPRI5FMTQRJF4ZZMYZYDQVRD55OTC" : {
-			name: "Crypto exchange rates",
+			name: "Crypto exchange rates oracle",
+			feedname_placeholder: "e.g. BTC_USD",
+			feedvalue_placeholder: "e.g. 1234.56",
+			instructions_url: "https://wiki.byteball.org/Oracle#Using_the_crypto-exchange-rates_oracle_in_a_smart_contract",
 			feednames_filter: ["^[\\dA-Z]+_[\\dA-Z]+$"],
 			feedvalues_filter: ["^[\\d\\.]+$"]
 		},
 		"GFK3RDAPQLLNCMQEVGGD2KCPZTLSG3HN" : {
-			name: "Flight delay tracker",
+			name: "Flight delay oracle",
+			feedname_placeholder: "e.g. BA950-2018-12-25",
+			feedvalue_placeholder: "e.g. 30",
+			instructions_url: "https://wiki.byteball.org/Oracle#Flight_delays_tracker",
 			feednames_filter: ["^[\\w\\d]+-\\d{4}-\\d{2}-\\d{2}$"],
 			feedvalues_filter: ["^[\\d]+$"]
 		},
 		"TKT4UESIKTTRALRRLWS4SENSTJX6ODCW" : {
-			name: "Sports betting",
+			name: "Sports betting oracle",
+			feedname_placeholder: "e.g. BROOKLYNNETS_CHARLOTTEHORNETS_2018-03-21",
+			feedvalue_placeholder: "e.g. BROOKLYNNETS",
+			instructions_url: "https://wiki.byteball.org/Sports_betting",
 			feednames_filter: ["^[\\w\\d]+_[\\w\\d]+_\\d{4}-\\d{2}-\\d{2}$"],
 			feedvalues_filter: ["^[\\w\\d]+$"]
 		},
 		"I2ADHGP4HL6J37NQAD73J7E5SKFIXJOT" : {
-			name: "Timestamp",
+			name: "Timestamp oracle",
+			feedname_placeholder: "timestamp",
+			feedvalue_placeholder: "e.g. 1541341626704",
+			instructions_url: "https://wiki.byteball.org/Oracle",
 			feednames_filter: ["^timestamp$"],
 			feedvalues_filter: ["^\\d{13,}$"]
 		}
@@ -58,11 +73,12 @@ angular.module('copayApp.services').factory('configService', function(storageSer
 		totalCosigners: 6
 	},
 
-	hub: (constants.alt === '2' && isTestnet) ? 'byteball.org/bb-test' : 'hub.kizunacoin.jp',
+	hub: (constants.alt === '2' && isTestnet) ? 'testnethub.kizunacoin.jp' : 'hub.kizunacoin.jp',
 	attestorAddresses: {
 		email: 'H5EZTQE7ABFH27AUDTQFMZIALANK6RBG',
 		reddit: 'OYW2XTDKSNKGSEZ27LMGNOPJSYIXHBHC',
 		steem: 'JEDZYC2HMGDBIDQKG3XSTXUSHMCBK725',
+		username: 'UENJPVZ7HVHM6QGVGT6MWOJGGRTUTJXQ',
 	},
 
 	// requires bluetooth permission on android
@@ -91,9 +107,11 @@ angular.module('copayApp.services').factory('configService', function(storageSer
 		bbUnitCode: 'one',
 		alternativeName: 'US Dollar',
 		alternativeIsoCode: 'USD',
-	  }
+		},
 	},
 
+	// hidden assets: key = wallet id, value = set of assets (string: boolean)
+	hiddenAssets: {},
 
 	rates: {
 	  url: 'https://insight.bitpay.com:443/api/rates',
@@ -130,10 +148,8 @@ angular.module('copayApp.services').factory('configService', function(storageSer
   root.get = function(cb) {
 
 	storageService.getConfig(function(err, localConfig) {
-		$log.debug('******local config :', localConfig);
-		configCache = migrateLocalConfig(localConfig);
-		
-		$log.debug('Preferences read:', configCache);
+	  configCache = migrateLocalConfig(localConfig);
+	  $log.debug('Preferences read:', configCache);
 	  return cb(err, configCache);
 	});
   };
@@ -152,13 +168,14 @@ angular.module('copayApp.services').factory('configService', function(storageSer
 	  }
 	  lodash.merge(config, oldOpts, newOpts);
 		checkAndReplaceOldUnitCode(config.wallet.settings);
-	  configCache = config;		
+	  configCache = config;
+
 	  storageService.storeConfig(JSON.stringify(config), cb);
 	});
   };
 
   root.reset = function(cb) {
-	configCache = lodash.clone(defaultConfig);	
+	configCache = lodash.clone(defaultConfig);
 	storageService.removeConfig(cb);
   };
 
@@ -167,7 +184,7 @@ angular.module('copayApp.services').factory('configService', function(storageSer
   };
   
   if(window.config){
-	configCache = migrateLocalConfig(window.config);	
+	configCache = migrateLocalConfig(window.config);
   }else{
 	root.get(function() {});
   }
@@ -213,6 +230,9 @@ angular.module('copayApp.services').factory('configService', function(storageSer
 		for (var attestorKey in defaultConfig.attestorAddresses){
 			if (!(attestorKey in _config.attestorAddresses))
 				_config.attestorAddresses[attestorKey] = defaultConfig.attestorAddresses[attestorKey];
+		}
+		if (!_config.hiddenAssets) {
+			_config.hiddenAssets = defaultConfig.hiddenAssets;
 		}
 		if (!_config.deviceName)
 			_config.deviceName = defaultConfig.getDeviceName();

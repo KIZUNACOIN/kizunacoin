@@ -31,17 +31,14 @@
   </section>
 
   <section class="middle tab-bar-section">
-   	<!-- <div class="mtabset">
+   	<div class="mtabset">
     	<div class="mtab-title" ng-click="$parent.mtab = 1" ng-class="{'active': mtab == 1}" ng-style="{'color': noColor ? '#00C8DC' : index.backgroundColor}" translate>
     		Contacts
     	</div>
     	<div class="mtab-title" ng-click="$parent.mtab = 2" ng-class="{'active': mtab == 2}" ng-style="{'color': noColor ? '#00C8DC' : index.backgroundColor}" donttranslate>
     		Bot Store
     	</div>
-		</div> -->
-		<h1 class="title ellipsis" ng-style="{'color': noColor ? '#00C8DC' : index.backgroundColor, 'max-width': '100%'}">
-			<span ng-if="index.arrBalances[index.assetIndex].shared === undefined && !index.shared_address || titleSection">{{(titleSection|translate) || (index.shared_address || index.alias || index.walletName)}}</span>
-		</h1>
+    </div>
   </section>
 </nav>
 

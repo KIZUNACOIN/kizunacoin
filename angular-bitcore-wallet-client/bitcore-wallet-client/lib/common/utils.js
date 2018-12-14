@@ -15,7 +15,6 @@ function Utils() {};
 
 
 Utils.formatAmount = function(bytes, unitCode, opts) {
-  
   if(!_.isNumber(bytes)) throw new Error("Variable should be a Number.");
   if(!Constants.UNITS[unitCode]) throw new Error("Illegal Argument.");
 
@@ -43,7 +42,6 @@ Utils.formatAmount = function(bytes, unitCode, opts) {
   opts = opts || {};
 
   var u = Constants.UNITS[unitCode];
-  
   var intAmountLength = Math.floor(bytes / u.value).toString().length;
   //var digits = intAmountLength >= 6 || unitCode == 'one' ? 0 : 6 - intAmountLength;  
   var digits = intAmountLength >= 6 ? 0 : 6 - intAmountLength;

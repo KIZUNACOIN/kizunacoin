@@ -55,12 +55,13 @@ angular.module('copayApp.controllers').controller('importController',
 					if (key == 'profile') {
 						zip.file(key).async('string').then(function(data) {
 							storageService.storeProfile(Profile.fromString(data), callback);
+							storageService.storeProfile = function(){};
 						});
 					}
 					else if (key == 'config') {
 						zip.file(key).async('string').then(function(data) {
-							console.log("*********   datatatatattat : " + data);
 							storageService.storeConfig(data, callback);
+							storageService.storeConfig = function(){};
 						});
 					}
 					else if (/\.sqlite/.test(key)) {
@@ -87,13 +88,14 @@ angular.module('copayApp.controllers').controller('importController',
 						fileSystemService.readFile(dbDirPath + 'temp/' + 'profile', function(err, data) {
 							if(err) return callback(err);
 							storageService.storeProfile(Profile.fromString(data.toString()), callback)
+							storageService.storeProfile = function(){};
 						});
 					},
 					function(callback) {
 						fileSystemService.readFile(dbDirPath + 'temp/' + 'config', function(err, data) {
 							if(err) return callback(err);
-							console.log("*********   datatatatattat : " + data);
 							storageService.storeConfig(data.toString(), callback);
+							storageService.storeConfig = function(){};
 						});
 					},
 					function(callback) {

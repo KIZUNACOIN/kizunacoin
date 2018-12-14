@@ -3,9 +3,9 @@
 
 #define MyAppName "KIZUNACOINWallet"
 #define MyAppPackageName "Kizunacoin"
-#define MyAppVersion "2.4.1"
+#define MyAppVersion "2.6.0"
 #define MyAppPublisher "Kizunacoin"
-#define MyAppURL "https://kizunacoin.jp"
+#define MyAppURL "https://www.kizunacoin.net"
 #define MyAppExeName "Kizunacoin.exe"
 
 [Setup]
@@ -35,13 +35,13 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 ; Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 
 [Registry]
-Root: HKLM; Subkey: "Software\Classes\byteball"; Flags: uninsdeletekey
-Root: HKLM; Subkey: "Software\Classes\byteball"; ValueType: string; ValueName: ""; ValueData: "URL:Byteball Protocol"
-Root: HKLM; Subkey: "Software\Classes\byteball"; ValueType: string; ValueName: "URL Protocol"; ValueData: ""
-Root: HKLM; Subkey: "Software\Classes\byteball\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\icon.ico"
-Root: HKLM; Subkey: "Software\Classes\byteball\shell"
-Root: HKLM; Subkey: "Software\Classes\byteball\shell\open"
-Root: HKLM; Subkey: "Software\Classes\byteball\shell\open\command"; ValueType: string; ValueName: ""; ValueData: "{app}\{#MyAppExeName} ""%1"""
+Root: HKLM; Subkey: "Software\Classes\Kizunacoin"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\Classes\Kizunacoin"; ValueType: string; ValueName: ""; ValueData: "URL:Kizunacoin Protocol"
+Root: HKLM; Subkey: "Software\Classes\Kizunacoin"; ValueType: string; ValueName: "URL Protocol"; ValueData: ""
+Root: HKLM; Subkey: "Software\Classes\Kizunacoin\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\icon.ico"
+Root: HKLM; Subkey: "Software\Classes\Kizunacoin\shell"
+Root: HKLM; Subkey: "Software\Classes\Kizunacoin\shell\open"
+Root: HKLM; Subkey: "Software\Classes\Kizunacoin\shell\open\command"; ValueType: string; ValueName: ""; ValueData: "{app}\{#MyAppExeName} ""%1"""
 Root: HKCR; Subkey: ".coin";                             ValueData: "{#MyAppName}Coin";          Flags: uninsdeletevalue; ValueType: string;  ValueName: ""
 Root: HKCR; Subkey: "{#MyAppName}Coin";                     ValueData: "{#MyAppName} Private Coin";  Flags: uninsdeletekey;   ValueType: string;  ValueName: ""
 Root: HKCR; Subkey: "{#MyAppName}Coin\DefaultIcon";             ValueData: "{app}\icon.ico";               ValueType: string;  ValueName: ""
@@ -51,7 +51,7 @@ Root: HKCR; Subkey: "{#MyAppName}Coin\shell\open\command";  ValueData: "{app}\{#
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-; Source: "..\byteballbuilds\byteball-test\win32\byteball.exe"; DestDir: "{app}"; Flags: ignoreversion
+; Source: "..\byteballbuilds\byteball-test\win32\Kizunacoin.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\byteballbuilds\{#MyAppPackageName}\win32\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "../public/img/icons/logo-circle.ico"; DestDir: "{app}"; DestName: "icon.ico"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files

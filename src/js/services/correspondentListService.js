@@ -5,7 +5,7 @@ var eventBus = require('core/event_bus.js');
 var ValidationUtils = require('core/validation_utils.js');
 var objectHash = require('core/object_hash.js');
 
-angular.module('copayApp.services').factory('correspondentListService', function($state, $rootScope, $sce, $compile, configService, storageService, profileService, go, lodash, $stickyState, $deepStateRedirect, $timeout, gettext) {
+angular.module('copayApp.services').factory('correspondentListService', function($state, $rootScope, $sce, $compile, configService, storageService, profileService, go, lodash, $stickyState, $deepStateRedirect, $timeout, gettext, pushNotificationsService) {
 	var root = {};
 	var device = require('core/device.js');
 	var wallet = require('core/wallet.js');
@@ -77,8 +77,10 @@ angular.module('copayApp.services').factory('correspondentListService', function
 		insertMsg(root.messageEventsByCorrespondent[peer_address], msg_obj);
 		if ($state.is('walletHome') && $rootScope.tab == 'walletHome') {
 			setCurrentCorrespondent(peer_address, function(bAnotherCorrespondent){
-				$stickyState.reset('correspondentDevices.correspondentDevice');
-				go.path('correspondentDevices.correspondentDevice');
+				$timeout(function(){
+					$stickyState.reset('correspondentDevices.correspondentDevice');
+					go.path('correspondentDevices.correspondentDevice');
+				});
 			});
 		}
 		else
@@ -102,8 +104,12 @@ angular.module('copayApp.services').factory('correspondentListService', function
 	
 	function highlightActions(text, arrMyAddresses){
 	//	return text.replace(/\b[2-7A-Z]{32}\b(?!(\?(amount|asset|device_address|single_address)|"))/g, function(address){
-		return text.replace(/(\s|^)([2-7A-Z]{32})([\s.,;!:]|$)/g, function(str, pre, address, post){
+		return text.replace(/(.*?\b)([2-7A-Z]{32})(\b.*?)/g, function(str, pre, address, post){
 			if (!ValidationUtils.isValidAddress(address))
+				return str;
+			if (pre.lastIndexOf(')') < pre.lastIndexOf(']('))
+				return str;
+			if (post.indexOf('](') < post.indexOf('[') || (post.indexOf('](') > -1) && (post.indexOf('[') == -1))
 				return str;
 		//	if (arrMyAddresses.indexOf(address) >= 0)
 		//		return address;
@@ -122,6 +128,8 @@ angular.module('copayApp.services').factory('correspondentListService', function
 			if (!objPaymentRequest)
 				return str;
 			return '<a ng-click="sendPayment(\''+address+'\', '+objPaymentRequest.amount+', \''+objPaymentRequest.asset+'\', \''+objPaymentRequest.device_address+'\', \''+objPaymentRequest.single_address+'\')">'+objPaymentRequest.amountStr+'</a>';
+		}).replace(/\[(.+?)\]\(suggest-command:(.+?)\)/g, function(str, description, command){
+			return '<a ng-click="suggestCommand(\''+escapeQuotes(command)+'\')" class="suggest-command">'+description+'</a>';
 		}).replace(/\[(.+?)\]\(command:(.+?)\)/g, function(str, description, command){
 			return '<a ng-click="sendCommand(\''+escapeQuotes(command)+'\', \''+escapeQuotes(description)+'\')" class="command">'+description+'</a>';
 		}).replace(/\[(.+?)\]\(payment:(.+?)\)/g, function(str, description, paymentJsonBase64){
@@ -141,10 +149,9 @@ angular.module('copayApp.services').factory('correspondentListService', function
 				return '[invalid profile]';
 			return '<a ng-click="acceptPrivateProfile(\''+privateProfileJsonBase64+'\')">[Profile of '+objPrivateProfile._label+']</a>';
 		}).replace(/\[(.+?)\]\(profile-request:([\w,]+?)\)/g, function(str, description, fields_list){
-			var arrFields = fields_list.split(',');
-			return '<a ng-click="choosePrivateProfile(\''+fields_list+'\')">[Request for profile]</a>';
+			return '<a ng-click="choosePrivateProfile(\''+escapeQuotes(fields_list)+'\')">[Request for profile]</a>';
 		}).replace(/\[(.+?)\]\(sign-message-request:(.+?)\)/g, function(str, description, message_to_sign){
-			return '<a ng-click="showSignMessageModal(\''+message_to_sign+'\')">[Request to sign message: '+message_to_sign+']</a>';
+			return '<a ng-click="showSignMessageModal(\''+escapeQuotes(message_to_sign)+'\')">[Request to sign message: '+message_to_sign+']</a>';
 		}).replace(/\[(.+?)\]\(signed-message:(.+?)\)/g, function(str, description, signedMessageBase64){
 			var info = getSignedMessageInfoFromJsonBase64(signedMessageBase64);
 			if (!info)
@@ -172,6 +179,12 @@ angular.module('copayApp.services').factory('correspondentListService', function
 		catch(e){
 			return null;
 		}
+		if (!ValidationUtils.isNonemptyArray(objMultiPaymentRequest.payments))
+			return null;
+		if (!objMultiPaymentRequest.payments.every(function(objPayment){
+			return ( ValidationUtils.isValidAddress(objPayment.address) && ValidationUtils.isPositiveInteger(objPayment.amount) && (!objPayment.asset || objPayment.asset === "base" || ValidationUtils.isValidBase64(objPayment.asset, constants.HASH_LENGTH)) );
+		}))
+			return null;
 		if (objMultiPaymentRequest.definitions){
 			for (var destinationAddress in objMultiPaymentRequest.definitions){
 				var arrDefinition = objMultiPaymentRequest.definitions[destinationAddress].definition;
@@ -289,7 +302,6 @@ angular.module('copayApp.services').factory('correspondentListService', function
 				return '[invalid profile]';
 			return '<a ng-click="acceptPrivateProfile(\''+privateProfileJsonBase64+'\')">[Profile of '+objPrivateProfile._label+']</a>';
 		}).replace(/\[(.+?)\]\(profile-request:([\w,]+?)\)/g, function(str, description, fields_list){
-			var arrFields = fields_list.split(',');
 			return '[Request for profile fields '+fields_list+']';
 		}).replace(/\[(.+?)\]\(sign-message-request:(.+?)\)/g, function(str, description, message_to_sign){
 			return '<i>[Request to sign message: '+message_to_sign+']</i>';
@@ -595,7 +607,9 @@ angular.module('copayApp.services').factory('correspondentListService', function
 			device.readCorrespondent(peer_address, function(correspondent){
 				if (correspondent.my_record_pref && correspondent.peer_record_pref) chatStorage.store(peer_address, body, 0, 'html');
 			});
-			go.path('correspondentDevices.correspondentDevice');
+			$timeout(function(){
+				go.path('correspondentDevices.correspondentDevice');
+			});
 		});
 	});
 	
@@ -609,6 +623,7 @@ angular.module('copayApp.services').factory('correspondentListService', function
 	});
 	
 	eventBus.on('paired', function(device_address){
+		pushNotificationsService.pushNotificationsInit();
 		if ($state.is('correspondentDevices'))
 			return $state.reload(); // refresh the list
 		if (!$state.is('correspondentDevices.correspondentDevice'))
