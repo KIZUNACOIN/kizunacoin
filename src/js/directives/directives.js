@@ -474,7 +474,7 @@ angular.module('copayApp.directives')
       },
       replace: true,
       //template: '<img ng-src="{{ logo_url }}" alt="Byteball">'
-      template: '<div><img ng-src="{{ logo_url }}" alt="Byteball"><br>Kizunacoin</div>'
+      template: '<div><img ng-src="{{ logo_url }}" alt="Kizunacoin"><br>Kizunacoin</div>'
     }
   })
   .directive('availableBalance', function() {

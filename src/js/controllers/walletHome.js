@@ -1008,7 +1008,7 @@ angular.module('copayApp.controllers')
 						if (isTextcoin) {
 							delete self.current_payment_key;
 							indexScope.setOngoingProcess(gettext('sending'), false);
-							return self.setSendError("you can send bound payments to byteball adresses only");
+							return self.setSendError("you can send bound payments to kizunacoin adresses only");
 						}
 						if (!recipient_device_address)
 							throw Error('recipient device address not known');
@@ -1191,7 +1191,7 @@ angular.module('copayApp.controllers')
 								if (binding && binding.reverseAmount) { // create a request for reverse payment
 									if (!my_address)
 										throw Error('my address not known');
-									var paymentRequestCode = 'byteball:' + my_address + '?amount=' + binding.reverseAmount + '&asset=' + encodeURIComponent(binding.reverseAsset);
+									var paymentRequestCode = 'kizunacoin:' + my_address + '?amount=' + binding.reverseAmount + '&asset=' + encodeURIComponent(binding.reverseAsset);
 									var paymentRequestText = '[reverse payment](' + paymentRequestCode + ')';
 									device.sendMessageToDevice(recipient_device_address, 'text', paymentRequestText);
 									var body = correspondentListService.formatOutgoingMessage(paymentRequestText);

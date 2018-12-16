@@ -95,7 +95,7 @@ angular.module('copayApp.controllers').controller('preferencesInformation',
             return;
           };
 
-          var body = 'Byteball Wallet "' + $scope.walletName + '" Addresses.\n\n';
+          var body = 'Kizunacoin Wallet "' + $scope.walletName + '" Addresses.\n\n';
           body += "\n";
           body += addrs.map(function(v) {
             return ('* ' + v.address + ' ' + v.path + ' ' + formatDate(v.createdOn));
@@ -103,7 +103,7 @@ angular.module('copayApp.controllers').controller('preferencesInformation',
 
           window.plugins.socialsharing.shareViaEmail(
             body,
-            'Byteball Addresses',
+            'Kizunacoin Addresses',
             null, // TO: must be null or an array
             null, // CC: must be null or an array
             null, // BCC: must be null or an array

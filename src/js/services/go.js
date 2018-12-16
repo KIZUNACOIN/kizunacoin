@@ -260,7 +260,7 @@ X-Ubuntu-StageHint=SideStage\n", {mode: 0755}, function(err){
 						fs.writeFile(mimeDir + '/packages/' + package_json.name+'.xml', "<?xml version=\"1.0\"?>\n\
 	 <mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>\n\
 	   <mime-type type=\"application/x-"+package_json.name+"\">\n\
-	   <comment>Byteball Private Coin</comment>\n\
+	   <comment>Kizunacoin Private Coin</comment>\n\
 	   <glob pattern=\"*."+configService.privateTextcoinExt+"\"/>\n\
 	  </mime-type>\n\
 	 </mime-info>\n", {mode: 0755}, function(err) {
@@ -301,7 +301,7 @@ X-Ubuntu-StageHint=SideStage\n", {mode: 0755}, function(err){
 				if (commandLine){
 					var file = extractByteballArgFromCommandLine(commandLine);
 					if (!file)
-						return console.log("no byteball: arg found");
+						return console.log("no kizunacoin: arg found");
 					handleUri(file);
 					gui.Window.get().focus();
 				}

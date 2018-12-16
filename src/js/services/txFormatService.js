@@ -15,6 +15,7 @@ angular.module('copayApp.services').factory('txFormatService', function(profileS
 	var formatFeeStr = function(fee) {
 		if (!fee) return;
 		return fee + ' KIZ';
+        //return profileService.formatAmountWithUnit(fee, asset);
 	};
 
   root.processTx = function(tx) {

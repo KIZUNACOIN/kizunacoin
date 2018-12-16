@@ -248,7 +248,7 @@ angular.module('copayApp.controllers').controller('importController',
 		self.iosWalletImportFromFile = function(fileName) {
 			$rootScope.$emit('Local/NeedsPassword', false, null, function(err, password) {
 				if (password) {
-					var backupDirPath = window.cordova.file.documentsDirectory + '/Byteball/';
+					var backupDirPath = window.cordova.file.documentsDirectory + '/Kizunacoin/';
 					fileSystemService.readFile(backupDirPath + fileName, function(err, data) {
 						if (err) return showError(err);
 						unzipAndWriteFiles(data, password);
