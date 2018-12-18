@@ -737,12 +737,12 @@ angular.module('copayApp.controllers')
 			var usd_amount_str = "";
 			var is_private = (asset == constants.BLACKBYTES_ASSET);
 			if (!asset || asset == "base" || asset == constants.BLACKBYTES_ASSET) {
-				var pair = asset == constants.BLACKBYTES_ASSET ? "GBB_USD" : "GBYTE_USD";
+				var pair = "KIZ_USD";
 				if (network.exchangeRates[pair]) {
-					usd_amount_str = " (≈" + ((amount/1e9)*network.exchangeRates[pair]).toLocaleString([], {maximumFractionDigits: 2}) + " USD)";
+					usd_amount_str = " (≈" + ((amount/1e6)*network.exchangeRates[pair]).toLocaleString([], {maximumFractionDigits: 2}) + " USD)";
 				}
-				amount = (amount/1e9).toLocaleString([], {maximumFractionDigits: 9});
-				asset = asset == constants.BLACKBYTES_ASSET ? "GBB" : "GB";
+				amount = (amount/1e6).toLocaleString([], {maximumFractionDigits: 6});
+				asset = "KIZ";
 			} else {
 				//indexScope.arrBalances[$scope.index.assetIndex]
 				var assetInfo = lodash.find(indexScope.arrBalances, function(balance){return balance.asset == asset});
@@ -754,7 +754,7 @@ angular.module('copayApp.controllers')
 					is_private = assetInfo.is_private;
 			}
 			return {
-				message: "Here is your " + (is_private ? "file" : "link") + " to receive " + amount + " " + asset + usd_amount_str + (is_private ? ".  If you don't have a Kizunacoin wallet yet, install it from https://kizunacoin.jp." : (": https://kizunacoin.jp/#textcoin?" + mnemonic)),
+				message: "Here is your " + (is_private ? "file" : "link") + " to receive " + amount + " " + asset + usd_amount_str + (is_private ? ".  If you don't have a Kizunacoin wallet yet, install it from https://kizunacoin.net." : (": Claim funds using textcoin and paste the following string:\n" + mnemonic)),
 				subject: "Kizunacoin user beamed you money"
 			}
 		}
